@@ -6,7 +6,11 @@
  */
 
 /* BEGIN RTD CONFIG EXAMPLES
- * Configuration examples for all 68 effects: 
+ * Configuration examples for all 68 effects:
+ * Different effect types run together on the same player automatically.
+ * replace applies only to repeated casts of the same effect type, including __suffix names.
+ * Simultaneous HUD messages are combined; the first visible effect in this list supplies position/color.
+ * When effects change the same property, the latest active value wins; immobilization blocks flight.
 
 // 0: Toxic — timed
 // Hurts enemy players in the specified radius.
@@ -20,7 +24,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Toxic: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -37,7 +41,7 @@
         // damage <float>: Amount of damage dealt.
         "damage" "20.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 1: Flying — timed
@@ -52,7 +56,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Flying: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -66,7 +70,7 @@
         // mode 1: Noclip.
         "mode" "0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 2: Infinite Ammo — timed
@@ -81,7 +85,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Infinite Ammo: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -95,7 +99,7 @@
         // reload 1: Reloading required.
         "reload" "0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 3: Scary Bullets — timed
@@ -110,7 +114,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Scary Bullets: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -125,7 +129,7 @@
         // min_damage <integer>: Minimum amount of damage required to trigger the effect.
         "min_damage" "5"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 4: Erecting a Sentry Here! — timed
@@ -140,7 +144,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Erecting a Sentry Here!: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -163,7 +167,7 @@
         "sentry" "Call MEDIC! to build a Sentry. {time}s remaining" // Instruction shown when the effect starts
         "sentry_spawned" "Sentries built: {count}/{max}" // Updated after each successful build
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 5: Homing Projectiles — timed
@@ -178,7 +182,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Homing Projectiles: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -193,7 +197,7 @@
         // crits 2: FullCrits.
         "crits" "0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 6: Explode — timed
@@ -209,7 +213,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Explode: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -224,7 +228,7 @@
         // health <integer>: Bomb's health.
         "health" "1500"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 7: Too Slow — timed
@@ -239,7 +243,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Too Slow: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -252,7 +256,7 @@
         // multiplier <float>: Movement speed multiplier.
         "multiplier" "0.4"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 8: Frozen — timed
@@ -267,7 +271,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Frozen: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -297,7 +301,7 @@
         // legacy 1: Use legacy Frozen imitating a Spy-cicle death.
         "legacy" "0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 9: Allahu Akbar — timed
@@ -312,7 +316,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Allahu Akbar: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -335,7 +339,7 @@
     {
         "damage" "Damage dealt: {damage}" // Result shown when the bomb detonates
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 10: Ignition — instant
@@ -350,7 +354,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Ignition activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -359,7 +363,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 11: Low Health — instant
@@ -374,7 +378,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Low Health activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -387,7 +391,7 @@
         // health <integer>: Set player health to this amount.
         "health" "7"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 12: GET HIGH — timed
@@ -402,7 +406,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "GET HIGH: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -415,7 +419,7 @@
         // interval <float>: Interval with which overlay color changes.
         "interval" "1.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 13: Blind — timed
@@ -430,7 +434,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Blind: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -449,7 +453,7 @@
         // unblind 1: Trigger a brief unblind when attacking enemies.
         "unblind" "0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 14: Strip to Melee — timed
@@ -465,7 +469,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Strip to Melee: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -483,7 +487,7 @@
         // flingspeed <float>: Speed at which the cases and flung.
         "flingspeed" "2000"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 15: Beacon — timed
@@ -498,7 +502,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Beacon: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -513,7 +517,7 @@
         // radius <float[10.0+]>: Radius of the beams. No less than 10.0, otherwise the effect is not shown.
         "radius" "375.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 16: Forced Taunt — timed
@@ -528,7 +532,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Forced Taunt: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -541,7 +545,7 @@
         // interval <float>: Interval to taunt in seconds, after that last taunt's end.
         "interval" "1.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 17: Monochromia — timed
@@ -556,7 +560,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Monochromia: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -565,7 +569,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 18: Earthquake — timed
@@ -580,7 +584,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Earthquake: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -595,7 +599,7 @@
         // frequency <float>: Shake frequency.
         "frequency" "25.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 19: Funny Feeling — timed
@@ -610,7 +614,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Funny Feeling: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -623,7 +627,7 @@
         // fov <float>: New FOV value.
         "fov" "360"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 20: Bad Sauce — timed
@@ -638,7 +642,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Bad Sauce: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -661,7 +665,7 @@
         // bleed <float>: Apply Bleed effect for a custom amount of time.
         "bleed" "5.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 21: Pootispencerere! — timed
@@ -676,7 +680,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Pootispencerere!: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -699,7 +703,7 @@
         "dispenser" "Call MEDIC! to build a Dispenser. {time}s remaining" // Instruction shown when the effect starts
         "dispenser_spawned" "Dispensers built: {count}/{max}" // Updated after each successful build
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 22: Infinite Double Jump — timed
@@ -714,7 +718,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Infinite Double Jump: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -723,7 +727,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 23: Powerful Hits — timed
@@ -738,7 +742,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Powerful Hits: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -751,7 +755,7 @@
         // multiplier <float>: Damage multiplier.
         "multiplier" "3.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 24: Big Ass Head — timed
@@ -766,7 +770,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Big Ass Head: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -779,7 +783,7 @@
         // scale <float>: Head scale multiplier.
         "scale" "4.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 25: Tiny Desk Ability — timed
@@ -794,7 +798,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Tiny Desk Ability: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -810,7 +814,7 @@
         // boost 1: Apply speed boost.
         "boost" "0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 26: Hanabi dayo~ gomene~ — instant
@@ -825,7 +829,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Hanabi dayo~ gomene~ activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -845,7 +849,7 @@
         // ignite 1: Ignite the player. Has no effect if the player died.
         "ignite" "0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 27: Deadly Voice — timed
@@ -860,7 +864,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Deadly Voice: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -881,7 +885,7 @@
     {
         "attack" "Call MEDIC! to attack. {time}s remaining" // Instruction shown when the effect starts
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 28: Eye for an Eye — timed
@@ -896,7 +900,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Eye for an Eye: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -905,7 +909,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 29: Weakened — timed
@@ -920,7 +924,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Weakened: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -933,7 +937,7 @@
         // multiplier <float>: Incoming damage multiplier.
         "multiplier" "2.5"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 30: Its Punishment Time! — instant
@@ -948,7 +952,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Its Punishment Time! activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -957,7 +961,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 31: Extra Ammo — instant
@@ -972,7 +976,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Extra Ammo activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -985,7 +989,7 @@
         // multiplier <float>: Ammo multiplier.
         "multiplier" "5.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 32: Suffocation — timed
@@ -1000,7 +1004,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Suffocation: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1017,7 +1021,7 @@
         // damage <float>: Amount of damage dealt.
         "damage" "5"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 33: Fast Hands — timed
@@ -1032,7 +1036,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Fast Hands: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1047,7 +1051,7 @@
         // reload <float>: Reload speed multiplier.
         "reload" "2.5"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 34: Outline — timed
@@ -1062,7 +1066,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Outline: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1071,7 +1075,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 35: Team Criticals — timed
@@ -1086,7 +1090,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Team Criticals: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1105,7 +1109,7 @@
         // mark_death 1: Mark the player for death.
         "mark_death" "0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 36: Allahu Akbar But On Fire — timed
@@ -1120,7 +1124,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Allahu Akbar But On Fire: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1141,7 +1145,7 @@
     {
         "ignited" "Players ignited: {count}" // Result shown when the fire bomb detonates
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 37: Fire Breath — timed
@@ -1156,7 +1160,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Fire Breath: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1175,7 +1179,7 @@
     {
         "attack" "Call MEDIC! to attack. {time}s remaining" // Instruction shown when the effect starts
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 38: Strong Recoil — timed
@@ -1190,7 +1194,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Strong Recoil: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1199,7 +1203,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 39: Cursed — timed
@@ -1214,7 +1218,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Cursed: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1223,7 +1227,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 40: Extra Throwables — instant
@@ -1238,7 +1242,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Extra Throwables activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1251,7 +1255,7 @@
         // amount <integer>: Amount of the item that should be given.
         "amount" "20"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 41: Explosive Arrows — timed
@@ -1266,7 +1270,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Explosive Arrows: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1283,7 +1287,7 @@
         // force <float>: Explosion force.
         "force" "150"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 42: Fatass — timed
@@ -1298,7 +1302,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Fatass: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1307,7 +1311,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 43: Spring Shoes — timed
@@ -1322,7 +1326,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Spring Shoes: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1331,7 +1335,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 44: Fake Lag — timed
@@ -1346,7 +1350,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Fake Lag: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1355,7 +1359,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 45: Drug Bullets — timed
@@ -1370,7 +1374,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Drug Bullets: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1383,7 +1387,7 @@
         // min_damage <float>: Minimum amount of damage required to trigger the effect.
         "min_damage" "5"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 46: Long Meleeeeeeeeeeee — timed
@@ -1398,7 +1402,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Long Meleeeeeeeeeeee: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1411,7 +1415,7 @@
         // multiplier <float>: Multiply the melee range by this amount.
         "multiplier" "10"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 47: Hat Throw — timed
@@ -1426,7 +1430,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Hat Throw: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1447,7 +1451,7 @@
     {
         "attack" "Call MEDIC! to attack. {time}s remaining" // Instruction shown when the effect starts
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 48: Bombardino Crocodillo — timed
@@ -1462,7 +1466,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Bombardino Crocodillo: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1487,7 +1491,7 @@
     {
         "attack" "Call MEDIC! to attack. {time}s remaining" // Instruction shown when the effect starts
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 49: Sickness — timed
@@ -1502,7 +1506,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Sickness: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1522,7 +1526,7 @@
         // maxdamage <float>: Maximum randomized damage.
         "maxdamage" "10"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 50: SkillIssue — instant
@@ -1537,7 +1541,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "SkillIssue activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1546,7 +1550,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 51: Drunk Walk — timed
@@ -1561,7 +1565,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Drunk Walk: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1578,7 +1582,7 @@
         // turnangle <float>: Angle to rotate the player camera each step.
         "turnangle" "25.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 52: Hell's Reach — timed
@@ -1593,7 +1597,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Hell's Reach: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1608,7 +1612,7 @@
         // maxdamage <float>: Maximum randomized explosion damage.
         "maxdamage" "35"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 53: Cursed Projectiles — timed
@@ -1623,7 +1627,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Cursed Projectiles: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1636,7 +1640,7 @@
         // delay <float>: Seconds before the projectile is turned.
         "delay" "1.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 54: Vampire — timed
@@ -1651,7 +1655,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Vampire: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1668,7 +1672,7 @@
         // resistance <float>: Seconds of respite after damaging an enemy.
         "resistance" "3.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 55: Bat Swarm — timed
@@ -1683,7 +1687,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Bat Swarm: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1709,7 +1713,7 @@
     {
         "attack" "Call MEDIC! to attack. {time}s remaining" // Instruction shown when the effect starts
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 56: Pumpkin Trail — timed
@@ -1724,7 +1728,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Pumpkin Trail: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1747,7 +1751,7 @@
     {
         "attack" "Call MEDIC! to attack. {time}s remaining" // Instruction shown when the effect starts
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 57: A Call Beyond — timed
@@ -1762,7 +1766,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "A Call Beyond: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1783,7 +1787,7 @@
     {
         "attack" "Call MEDIC! to attack. {time}s remaining" // Instruction shown when the effect starts
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 58: Kru Thai Strikes — timed
@@ -1799,7 +1803,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Kru Thai Strikes: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1818,7 +1822,7 @@
         // slowdown <float>: Percentage that the player is slowed down by during damage ticks.
         "slowdown" "0.2"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 59: Overheal Bonus — timed
@@ -1833,7 +1837,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Overheal Bonus: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1846,7 +1850,7 @@
         // scale <float>: Overheal bonus multiplier.
         "scale" "5.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 60: Sunlight Spear — timed
@@ -1861,7 +1865,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Sunlight Spear: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1888,7 +1892,7 @@
     {
         "attack" "Call MEDIC! to attack. {time}s remaining" // Instruction shown when the effect starts
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 61: Elden Stars — timed
@@ -1903,7 +1907,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Elden Stars: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1926,7 +1930,7 @@
     {
         "attack" "Call MEDIC! to attack. {time}s remaining" // Instruction shown when the effect starts
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 62: Frog — timed
@@ -1941,7 +1945,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Frog: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1958,7 +1962,7 @@
         // horizontal <float>: Horizontal jump velocity.
         "horizontal" "600.0"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 63: Paranoia — timed
@@ -1973,7 +1977,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Paranoia: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -1982,7 +1986,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 64: Heavy Rockets — timed
@@ -1997,7 +2001,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Heavy Rockets: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -2010,7 +2014,7 @@
         // sharpness <integer[1 - 100]>: Defines how sharp rockets turn towards ground (should be under 20 for decent effect).
         "sharpness" "8"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 65: Weapon Mixup — timed
@@ -2025,7 +2029,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Weapon Mixup: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -2034,7 +2038,7 @@
     "message_y"          "0.30" // HUD vertical position: 0.0-1.0; -1.0 = centered
     "message_color"      "255 255 255 255" // Red green blue alpha, each 0-255
     // This effect has no additional settings
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 66: Autoheal — timed
@@ -2049,7 +2053,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Autoheal: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -2064,7 +2068,7 @@
         // health <integer>: Health gained each regen tick.
         "health" "4"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 // 67: Team Autoheal — timed
@@ -2079,7 +2083,7 @@
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
     "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
-    "replace"            "false" // true = remove the target's active effect first; false = skip busy targets
+    "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
     "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Team Autoheal: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
@@ -2096,7 +2100,7 @@
         // health <integer>: Health gained each regen tick.
         "health" "2"
     }
-    "plugin_name"        "ffs_rtd_ability" // Required subplugin filename, without the .smx extension
+    "plugin_name"        "ffs_rtd_ability"
 }
 
 END RTD CONFIG EXAMPLES */
@@ -2130,18 +2134,993 @@ public Plugin myinfo =
     name = "FF2 Rewrite: RTD Abilities",
     author = "Codex, Phil25 (original RTD effects), Xeacring",
     description = "68 configurable, standalone FF2 Rewrite RTD abilities",
-    version = "1.1.2"
+    version = "1.2.0"
 };
 
 // The original implementations share these private engine types and helpers.
-Rollers g_hRollers;
+#define RTD_EFFECT_COUNT 68
+int g_ContextEffect;
+Rollers g_AllRollers[RTD_EFFECT_COUNT];
+#define g_hRollers g_AllRollers[g_ContextEffect]
+#define Cache g_AllCache[g_ContextEffect]
+#define Events g_AllEvents[g_ContextEffect]
 Perk g_ActivePerk;
 ConfigData g_ActiveSettings;
 bool g_ActiveInstant;
 #include "rtd/macros.sp"
 #include "rtd/storage/precached.sp"
-#include "rtd/storage/cache.sp"
-#include "rtd/storage/event_registrar.sp"
+// Private cache storage: each effect owns its entities and timer slots.
+enum struct ClientFlags
+{
+	int iVals[4]; // SM ints are 32 bit, 4 are needed to hold 100 players
+
+	void Set(const int iIndex)
+	{
+		int iOverflows = iIndex / 32;
+		this.iVals[iOverflows] |= 1 << (iIndex - 32 * iOverflows);
+	}
+
+	void Unset(const int iIndex)
+	{
+		int iOverflows = iIndex / 32;
+		this.iVals[iOverflows] &= ~(1 << (iIndex - 32 * iOverflows));
+	}
+
+	void Bool(const int iIndex, const bool bSet)
+	{
+		if (bSet)
+		{
+			this.Set(iIndex);
+		}
+		else
+		{
+			this.Unset(iIndex);
+		}
+	}
+
+	bool Test(const int iIndex)
+	{
+		int iOverflows = iIndex / 32;
+		return view_as<bool>(this.iVals[iOverflows] & (1 << (iIndex - 32 * iOverflows)));
+	}
+
+	void Reset()
+	{
+		this.iVals[0] = 0;
+		this.iVals[1] = 0;
+		this.iVals[2] = 0;
+		this.iVals[3] = 0;
+	}
+}
+
+methodmap Entity
+{
+	public Entity(const int iIndex)
+	{
+		return view_as<Entity>(EntIndexToEntRef(iIndex));
+	}
+
+	public bool IsValid()
+	{
+		return this.Index > MaxClients;
+	}
+
+	public void Kill()
+	{
+		if (this.IsValid())
+			AcceptEntityInput(this.Index, "Kill");
+	}
+
+	property int Index
+	{
+		public get()
+		{
+			return EntRefToEntIndex(view_as<int>(this));
+		}
+	}
+
+	property int Reference
+	{
+		public get()
+		{
+			return view_as<int>(this);
+		}
+	}
+}
+
+enum EntSlot
+{
+	EntSlot_1,
+	EntSlot_2,
+	EntSlot_3,
+	EntSlot_SIZE,
+}
+
+enum EntCleanup
+{
+	EntCleanup_Auto,
+	EntCleanup_None,
+}
+
+typedef PerkRepeater = function Action(const int client);
+typedef PerkDelay = function void(const int client);
+typedef PlayerHurt = function void(const int client, const int iAttacker);
+
+enum struct PlayerCache
+{
+	int _ClientIndex;
+	int _EffectIndex;
+	int Int[4];
+	float Float[4];
+	Entity _Ent[EntSlot_SIZE];
+	EntCleanup _EntCleanup[EntSlot_SIZE];
+	ClientFlags Flags;
+
+	DataPack _TimerData[2];
+
+	void Init(const int client)
+	{
+		this._ClientIndex = client;
+		this._EffectIndex = g_ContextEffect;
+	}
+
+	Entity GetEnt(const EntSlot eSlot)
+	{
+		return this._Ent[eSlot];
+	}
+
+	void SetEnt(const EntSlot eSlot, const int iEntIndex, const EntCleanup eCleanup=EntCleanup_Auto)
+	{
+		this.GetEnt(eSlot).Kill();
+		this._Ent[eSlot] = Entity(iEntIndex);
+		this._EntCleanup[eSlot] = eCleanup;
+	}
+
+	void KillEnt(const EntSlot eSlot)
+	{
+		this.GetEnt(eSlot).Kill();
+	}
+
+	void LeakEnt(const EntSlot eSlot)
+	{
+		this._Ent[eSlot] = Entity(0);
+	}
+
+	void Repeat(const float fInterval, PerkRepeater hFunc)
+	{
+		int iDataIndex = this._PreparePerkTimerDataPack();
+		this._TimerData[iDataIndex].WriteFunction(hFunc);
+
+		this._CreatePerkTimer(fInterval, Timer_PerkTimer, iDataIndex, TIMER_REPEAT);
+	}
+
+	void Delay(const float fDelay, PerkDelay hFunc)
+	{
+		int iDataIndex = this._PreparePerkTimerDataPack();
+		this._TimerData[iDataIndex].WriteFunction(hFunc);
+
+		this._CreatePerkTimer(fDelay, Timer_PerkDelay, iDataIndex);
+	}
+
+	int _PreparePerkTimerDataPack()
+	{
+		int i = this._FindTimerDataIndex();
+
+		this._TimerData[i] = new DataPack();
+		this._TimerData[i].WriteCell(i);
+		this._TimerData[i].WriteCell(this._ClientIndex);
+        this._TimerData[i].WriteCell(GetClientUserId(this._ClientIndex));
+        this._TimerData[i].WriteCell(this._EffectIndex);
+
+		return i;
+	}
+
+	void _CreatePerkTimer(const float fTime, Timer hFunc, const int iDataIndex, const int iFlags=0)
+	{
+		CreateTimer(fTime, hFunc, this._TimerData[iDataIndex], iFlags | TIMER_DATA_HNDL_CLOSE | TIMER_FLAG_NO_MAPCHANGE);
+
+#if defined DEBUG
+		char sCaller[64];
+		GetCallerName(sCaller, sizeof(sCaller), 2);
+		LogError("[%s] Created timer for %N<%d>: %x", sCaller, this._ClientIndex, this._ClientIndex, this._TimerData[iDataIndex]);
+#endif
+	}
+
+	void _NullifyTimerData(const int iIndex)
+	{
+		// If already nullified the timer was either not used in the first place, or somehow was
+		// nullified before its corresponding perk ended but after having been marked for stopping.
+		if (this._TimerData[iIndex] == null)
+			return;
+
+		this._TimerData[iIndex].Reset();
+		this._TimerData[iIndex].WriteCell(-1);
+
+		// Purposefully leak the timer and its DataPack handles. Deleting a timer manually here
+		// sometimes errors out as if it were destroyed inside the callback, which is illegal. This
+		// way, the first cell of the DataPack will instruct the timer to kill itself lazily.
+		this._TimerData[iIndex] = null;
+	}
+
+	int _FindTimerDataIndex()
+	{
+		for (int i = 0; i < sizeof(this._TimerData); ++i)
+			if (this._TimerData[i] == null)
+				return i;
+
+		// This should never happen
+		LogError("Internal error: could not find available timer index");
+		return -1;
+	}
+
+	void Cleanup()
+	{
+		switch (this._EntCleanup[EntSlot_1])
+		{
+			case EntCleanup_Auto: this.KillEnt(EntSlot_1);
+			case EntCleanup_None: this.LeakEnt(EntSlot_1);
+		}
+
+		switch (this._EntCleanup[EntSlot_2])
+		{
+			case EntCleanup_Auto: this.KillEnt(EntSlot_2);
+			case EntCleanup_None: this.LeakEnt(EntSlot_2);
+		}
+
+		switch (this._EntCleanup[EntSlot_3])
+		{
+			case EntCleanup_Auto: this.KillEnt(EntSlot_3);
+			case EntCleanup_None: this.LeakEnt(EntSlot_3);
+		}
+
+#if defined DEBUG
+		LogError("Cleaning up timers for %N<%d>: %x, %x", this._ClientIndex, this._ClientIndex, this._TimerData[0], this._TimerData[1]);
+#endif
+
+		this._NullifyTimerData(0);
+		this._NullifyTimerData(1);
+	}
+}
+
+enum CritBoost
+{
+	CritBoost_Mini = 1,
+	CritBoost_Full = 2,
+}
+
+enum struct SharedCache
+{
+	int MaxHealth;
+	TFClassType ClassForPerk;
+	int _CritBoosted;
+    int _MiniBoosts;
+    int _FullBoosts;
+    float _SmiteCritUntil;
+    bool _TinySpeedBoost;
+    float _BatSpeedBuffUntil;
+	float TempPowerPlayTimePoint;
+
+	float MaxHealthFloat()
+	{
+		return float(this.MaxHealth);
+	}
+
+	bool IsCritBoosted(const int client)
+	{
+		return this._CritBoosted > 0;
+	}
+
+    void AddCritBoost(const int client, const CritBoost boost)
+    {
+        if (boost == CritBoost_Mini) this._MiniBoosts++;
+        else this._FullBoosts++;
+        this.UpdateCritBoost(client);
+    }
+
+    void RemoveCritBoost(const int client, const CritBoost boost)
+    {
+        if (boost == CritBoost_Mini && this._MiniBoosts > 0) this._MiniBoosts--;
+        else if (boost == CritBoost_Full && this._FullBoosts > 0) this._FullBoosts--;
+        this.UpdateCritBoost(client);
+    }
+
+    void UpdateSpeedBoost(const int client)
+    {
+        if (this._TinySpeedBoost)
+            TF2_AddCondition(client, TFCond_SpeedBuffAlly);
+        else
+        {
+            TF2_RemoveCondition(client, TFCond_SpeedBuffAlly);
+            float remaining = this._BatSpeedBuffUntil - GetGameTime();
+            if (remaining > 0.0)
+                TF2_AddCondition(client, TFCond_SpeedBuffAlly, remaining);
+        }
+    }
+
+    void UpdateCritBoost(const int client)
+    {
+        this._CritBoosted = this._MiniBoosts + 2 * this._FullBoosts;
+        // Add the surviving boost before removing the other condition; nested
+        // condition forwards must already see a consistent counter.
+        if (this._FullBoosts > 0)
+        {
+            TF2_AddCondition(client, TFCond_CritOnFirstBlood);
+            TF2_RemoveCondition(client, TFCond_Buffed);
+        }
+        else if (this._SmiteCritUntil > GetGameTime())
+        {
+            TF2_AddCondition(client, TFCond_CritOnFirstBlood, this._SmiteCritUntil - GetGameTime());
+        }
+        else if (this._MiniBoosts > 0)
+        {
+            TF2_AddCondition(client, TFCond_Buffed);
+            TF2_RemoveCondition(client, TFCond_CritOnFirstBlood);
+        }
+        else
+        {
+            TF2_RemoveCondition(client, TFCond_CritOnFirstBlood);
+            TF2_RemoveCondition(client, TFCond_Buffed);
+        }
+    }
+}
+
+PlayerCache g_AllCache[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
+SharedCache Shared[MAXPLAYERS + 1];
+
+// should not be necessary but acts as extra failsafe in case an error happens elsewhere
+bool ValidatePerkTimerClient(const int client)
+{
+	if (IsClientInGame(client) && IsPlayerAlive(client))
+		return true;
+
+	LogError("Internal error: client \"%L\" is not in game or not alive", client);
+	return false;
+}
+
+public Action Timer_PerkTimer(Handle hTimer, DataPack hData)
+{
+	hData.Reset();
+	int iIndex = hData.ReadCell();
+
+	// timer marked for deletion
+	if (iIndex == -1)
+		return Plugin_Stop;
+
+	int client = hData.ReadCell();
+	int userid = hData.ReadCell();
+    int effect = hData.ReadCell();
+    if (GetClientOfUserId(userid) != client || !ValidatePerkTimerClient(client))
+	{
+		if (g_AllCache[effect][client]._TimerData[iIndex] == hData)
+            g_AllCache[effect][client]._NullifyTimerData(iIndex);
+		return Plugin_Stop;
+	}
+
+	int previous = g_ContextEffect;
+    g_ContextEffect = effect;
+    Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+	Call_PushCell(client);
+
+	int iResult;
+	Call_Finish(iResult);
+    g_ContextEffect = previous;
+
+	switch (view_as<Action>(iResult))
+	{
+		case Plugin_Stop, Plugin_Handled:
+			if (g_AllCache[effect][client]._TimerData[iIndex] == hData)
+            g_AllCache[effect][client]._NullifyTimerData(iIndex);
+	}
+
+	return view_as<Action>(iResult);
+}
+
+public Action Timer_PerkDelay(Handle hTimer, DataPack hData)
+{
+	hData.Reset();
+	int iIndex = hData.ReadCell();
+
+	// timer marked for deletion
+	if (iIndex == -1)
+		return Plugin_Stop;
+
+	int client = hData.ReadCell();
+	int userid = hData.ReadCell();
+    int effect = hData.ReadCell();
+    if (GetClientOfUserId(userid) != client || !ValidatePerkTimerClient(client))
+	{
+		if (g_AllCache[effect][client]._TimerData[iIndex] == hData)
+            g_AllCache[effect][client]._NullifyTimerData(iIndex);
+		return Plugin_Stop;
+	}
+
+	int previous = g_ContextEffect;
+    g_ContextEffect = effect;
+    Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+	Call_PushCell(client);
+	Call_Finish();
+    g_ContextEffect = previous;
+
+	if (g_AllCache[effect][client]._TimerData[iIndex] == hData)
+            g_AllCache[effect][client]._NullifyTimerData(iIndex);
+	return Plugin_Stop;
+}
+
+typedef EREntitySpawned = function void(const int client, const int iEntity);
+typedef EREntityClassnameFilter = function bool(const char[] sClassname);
+typedef EREntityOwnerRetriever = function int(const int iEntity);
+typedef ERConditionChange = function void(const int client, const TFCond eCondition);
+typedef ERPlayerAttacked = function void(const int client, const int iVictim, const int iDamage, const int iRemainingHealth);
+typedef ERPlayer = function void(const int client);
+typedef ERAttackCritCheck = function bool(const int client, const int iWeapon);
+typedef ERPlayerRunCmd = function bool(const int client, int& iButtons, float fVel[3], float fAng[3]);
+typedef ERUberchargeDeployed = function void(const int client, const int iTarget);
+typedef ERSound = function bool(const int client, const char[] sSound);
+
+public int Retriever_OwnerEntity(const int iEnt)
+{
+	return GetEntPropEnt(iEnt, Prop_Send, "m_hOwnerEntity");
+}
+
+public int Retriever_AccountId(const int iEnt)
+{
+	return AccountIDToClient(GetEntProp(iEnt, Prop_Send, "m_iAccountID"));
+}
+
+public bool Classname_DroppedWeapon(const char[] sClassname)
+{
+	return StrEqual(sClassname, "tf_dropped_weapon");
+}
+
+enum SubscriptionType
+{
+	SubscriptionType_Roller,
+	SubscriptionType_Any,
+}
+
+enum SubscriptionTypePerk
+{
+	SubscriptionTypeRoller_Current, // clients who are using the perk
+	SubscriptionTypeRoller_Latest, // clients either are using or is the last perk they used
+}
+
+enum struct EventRegistrar
+{
+	ArrayList _OnEntitySpawned;
+	ArrayList _OnConditionAdded;
+	ArrayList _OnConditionRemoved;
+	ArrayList _OnPlayerAttacked;
+	ArrayList _OnPlayerDied;
+	ArrayList _OnPlayerDisconnected;
+	ArrayList _OnAttackCritCheck;
+	ArrayList _OnPlayerRunCmd;
+	ArrayList _OnUberchargeDeployed;
+	ArrayList _OnResupply;
+	ArrayList _OnVoice;
+	ArrayList _OnSound;
+
+	ArrayList _OnEntitySpawnedSubscribers;
+
+	void Init()
+	{
+		this._OnEntitySpawned = new ArrayList();
+		this._OnConditionAdded = new ArrayList();
+		this._OnConditionRemoved = new ArrayList();
+		this._OnPlayerAttacked = new ArrayList();
+		this._OnPlayerDied = new ArrayList();
+		this._OnPlayerDisconnected = new ArrayList();
+		this._OnAttackCritCheck = new ArrayList();
+		this._OnPlayerRunCmd = new ArrayList();
+		this._OnUberchargeDeployed = new ArrayList();
+		this._OnResupply = new ArrayList();
+		this._OnVoice = new ArrayList();
+		this._OnSound = new ArrayList();
+
+		this._OnEntitySpawnedSubscribers = new ArrayList();
+	}
+
+	void Cleanup()
+	{
+		this._CleanupCallbackArray(this._OnEntitySpawned);
+		this._CleanupCallbackArray(this._OnConditionAdded);
+		this._CleanupCallbackArray(this._OnConditionRemoved);
+		this._CleanupCallbackArray(this._OnPlayerAttacked);
+		this._CleanupCallbackArray(this._OnPlayerDied);
+		this._CleanupCallbackArray(this._OnPlayerDisconnected);
+		this._CleanupCallbackArray(this._OnAttackCritCheck);
+		this._CleanupCallbackArray(this._OnPlayerRunCmd);
+		this._CleanupCallbackArray(this._OnUberchargeDeployed);
+		this._CleanupCallbackArray(this._OnResupply);
+		this._CleanupCallbackArray(this._OnVoice);
+		this._CleanupCallbackArray(this._OnSound);
+
+		delete this._OnEntitySpawnedSubscribers;
+	}
+
+	void _CleanupCallbackArray(ArrayList& list)
+	{
+		for (int i = 0; i < list.Length; ++i)
+			CloseHandle(view_as<DataPack>(list.Get(i)));
+
+		delete list;
+	}
+
+	void OnEntitySpawned(const Perk perk, EREntitySpawned hSpawned, EREntityClassnameFilter hFilter, EREntityOwnerRetriever hOwner)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteFunction(hFilter);
+		hData.WriteFunction(hOwner);
+		hData.WriteCell(perk);
+		hData.WriteFunction(hSpawned);
+
+		this._OnEntitySpawnedSubscribers.Push(perk);
+		this._OnEntitySpawned.Push(hData);
+	}
+
+	bool SubscribesToEntitySpawned(const Perk perk)
+	{
+		for (int i = 0; i < this._OnEntitySpawnedSubscribers.Length; ++i)
+			if (this._OnEntitySpawnedSubscribers.Get(i) == perk)
+				return true;
+
+		return false;
+	}
+
+	bool ClassnameHasSubscribers(const char[] sClassname)
+	{
+		for (int i = 0; i < this._OnEntitySpawned.Length; ++i)
+		{
+			DataPack hData = this._OnEntitySpawned.Get(i);
+			hData.Reset();
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushString(sClassname);
+
+			bool bFilter;
+			Call_Finish(bFilter);
+
+			if (bFilter)
+				return true;
+		}
+
+		return false;
+	}
+
+	void EntitySpawned(const int iEntity)
+	{
+		char sClassname[64];
+		GetEntityClassname(iEntity, sClassname, sizeof(sClassname));
+
+		for (int i = 0; i < this._OnEntitySpawned.Length; ++i)
+		{
+			DataPack hData = this._OnEntitySpawned.Get(i);
+			hData.Reset();
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushString(sClassname);
+
+			bool bFilter;
+			Call_Finish(bFilter);
+
+			if (!bFilter)
+				continue;
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushCell(iEntity);
+
+			int client;
+			Call_Finish(client);
+
+			if (!(1 <= client <= MaxClients && IsClientInGame(client)))
+				continue;
+
+			// EntitySpawned registered only for clients in a perk, but this is triggered after the
+			// perk ends because of the 0.1 delay. The recent check ensures we get all the entities.
+			if (!IsRecentPerk(client, hData.ReadCell()))
+				continue;
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushCell(client);
+			Call_PushCell(iEntity);
+			Call_Finish();
+		}
+	}
+
+	void OnConditionAdded(const Perk perk, ERConditionChange hCallback, const SubscriptionType eSubType=SubscriptionType_Roller)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteFunction(hCallback);
+		hData.WriteCell(eSubType);
+		hData.WriteCell(perk);
+
+		this._OnConditionAdded.Push(hData);
+	}
+
+	void ConditionAdded(const int client, const TFCond eCondition)
+	{
+		Perk clientPerk = GetDispatchPerk(client);
+
+		for (int i = 0; i < this._OnConditionAdded.Length; ++i)
+		{
+			DataPack hData = this._OnConditionAdded.Get(i);
+			hData.Reset();
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+
+			if (view_as<SubscriptionType>(hData.ReadCell()) == SubscriptionType_Roller)
+			{
+				if (clientPerk != hData.ReadCell())
+				{
+					Call_Cancel();
+					continue;
+				}
+			}
+
+			Call_PushCell(client);
+			Call_PushCell(eCondition);
+			Call_Finish();
+		}
+	}
+
+	void OnConditionRemoved(const Perk perk, ERConditionChange hCallback, const SubscriptionType eSubType=SubscriptionType_Roller)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteFunction(hCallback);
+		hData.WriteCell(eSubType);
+		hData.WriteCell(perk);
+
+		this._OnConditionRemoved.Push(hData);
+	}
+
+	void ConditionRemoved(const int client, const TFCond eCondition)
+	{
+		Perk clientPerk = GetDispatchPerk(client);
+
+		for (int i = 0; i < this._OnConditionRemoved.Length; ++i)
+		{
+			DataPack hData = this._OnConditionRemoved.Get(i);
+			hData.Reset();
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+
+			if (view_as<SubscriptionType>(hData.ReadCell()) == SubscriptionType_Roller)
+			{
+				if (clientPerk != hData.ReadCell())
+				{
+					Call_Cancel();
+					continue;
+				}
+			}
+
+			Call_PushCell(client);
+			Call_PushCell(eCondition);
+			Call_Finish();
+		}
+	}
+
+	void OnPlayerAttacked(const Perk perk, ERPlayerAttacked hCallback)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteCell(perk);
+		hData.WriteFunction(hCallback);
+
+		this._OnPlayerAttacked.Push(hData);
+	}
+
+	void PlayerAttacked(const int client, const int iVictim, const int iDamage, const int iRemainingHealth)
+	{
+		Perk perk = GetDispatchPerk(client);
+		if (perk == null)
+			return;
+
+		for (int i = 0; i < this._OnPlayerAttacked.Length; ++i)
+		{
+			DataPack hData = this._OnPlayerAttacked.Get(i);
+			hData.Reset();
+
+			if (perk != hData.ReadCell())
+				continue;
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushCell(client);
+			Call_PushCell(iVictim);
+			Call_PushCell(iDamage);
+			Call_PushCell(iRemainingHealth);
+			Call_Finish();
+		}
+	}
+
+	void OnPlayerDied(const Perk perk, ERPlayer hCallback, const SubscriptionType eSubType=SubscriptionType_Roller)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteFunction(hCallback);
+		hData.WriteCell(eSubType);
+		hData.WriteCell(perk);
+
+		this._OnPlayerDied.Push(hData);
+	}
+
+	void PlayerDied(const int client)
+	{
+		Perk clientPerk = GetDispatchPerk(client);
+
+		for (int i = 0; i < this._OnPlayerDied.Length; ++i)
+		{
+			DataPack hData = this._OnPlayerDied.Get(i);
+			hData.Reset();
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+
+			if (view_as<SubscriptionType>(hData.ReadCell()) == SubscriptionType_Roller)
+			{
+				if (clientPerk != hData.ReadCell())
+				{
+					Call_Cancel();
+					continue;
+				}
+			}
+
+			Call_PushCell(client);
+			Call_Finish();
+		}
+	}
+
+	void OnPlayerDisconnected(const Perk perk, ERPlayer hCallback, const SubscriptionType eSubType=SubscriptionType_Roller)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteFunction(hCallback);
+		hData.WriteCell(eSubType);
+		hData.WriteCell(perk);
+
+		this._OnPlayerDisconnected.Push(hData);
+	}
+
+	void PlayerDisconnected(const int client)
+	{
+		Perk clientPerk = GetDispatchPerk(client);
+
+		for (int i = 0; i < this._OnPlayerDisconnected.Length; ++i)
+		{
+			DataPack hData = this._OnPlayerDisconnected.Get(i);
+			hData.Reset();
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+
+			if (view_as<SubscriptionType>(hData.ReadCell()) == SubscriptionType_Roller)
+			{
+				if (clientPerk != hData.ReadCell())
+				{
+					Call_Cancel();
+					continue;
+				}
+			}
+
+			Call_PushCell(client);
+			Call_Finish();
+		}
+	}
+
+	void OnAttackCritCheck(const Perk perk, ERAttackCritCheck hCallback, const SubscriptionType eSubType=SubscriptionType_Roller)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteFunction(hCallback);
+		hData.WriteCell(eSubType);
+		hData.WriteCell(perk);
+
+		this._OnAttackCritCheck.Push(hData);
+	}
+
+	bool AttackCritCheck(const int client, const int iWeapon)
+	{
+		Perk clientPerk = GetDispatchPerk(client);
+
+		bool bShouldCrit = false;
+
+		for (int i = 0; i < this._OnAttackCritCheck.Length; ++i)
+		{
+			DataPack hData = this._OnAttackCritCheck.Get(i);
+			hData.Reset();
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+
+			if (view_as<SubscriptionType>(hData.ReadCell()) == SubscriptionType_Roller)
+			{
+				if (clientPerk != hData.ReadCell())
+				{
+					Call_Cancel();
+					continue;
+				}
+			}
+
+			Call_PushCell(client);
+			Call_PushCell(iWeapon);
+
+			bool bResult;
+			Call_Finish(bResult);
+
+			bShouldCrit |= bResult;
+		}
+
+		return bShouldCrit;
+	}
+
+	void OnPlayerRunCmd(const Perk perk, ERPlayerRunCmd hCallback)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteCell(perk);
+		hData.WriteFunction(hCallback);
+
+		this._OnPlayerRunCmd.Push(hData);
+	}
+
+	bool PlayerRunCmd(const int client, int& iButtons, float fVel[3], float fAng[3])
+	{
+		Perk perk = GetDispatchPerk(client);
+		if (perk == null)
+			return false;
+
+		for (int i = 0; i < this._OnPlayerRunCmd.Length; ++i)
+		{
+			DataPack hData = this._OnPlayerRunCmd.Get(i);
+			hData.Reset();
+
+			if (perk != hData.ReadCell())
+				continue;
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushCell(client);
+			Call_PushCellRef(iButtons);
+			Call_PushArrayEx(fVel, sizeof(fVel), SM_PARAM_COPYBACK);
+			Call_PushArrayEx(fAng, sizeof(fVel), SM_PARAM_COPYBACK);
+
+			bool bResult;
+			Call_Finish(bResult);
+
+			// We can return right away, `Events.OnPlayerRunCmd()` does not support subscribing to
+			// non-roller players (it shouldn't, calls could get a bit too expensive), this is run
+			// for a single player and this registrar contains only one effect type.
+			if (bResult)
+				return true;
+		}
+
+		return false;
+	}
+
+	void OnUberchargeDeployed(const Perk perk, ERUberchargeDeployed hCallback)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteCell(perk);
+		hData.WriteFunction(hCallback);
+
+		this._OnUberchargeDeployed.Push(hData);
+	}
+
+	void UberchargeDeployed(const int client, const int iTarget)
+	{
+		Perk perk = GetDispatchPerk(client);
+		if (perk == null)
+			return;
+
+		for (int i = 0; i < this._OnUberchargeDeployed.Length; ++i)
+		{
+			DataPack hData = this._OnUberchargeDeployed.Get(i);
+			hData.Reset();
+
+			if (perk != hData.ReadCell())
+				continue;
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushCell(client);
+			Call_PushCell(iTarget);
+			Call_Finish();
+		}
+	}
+
+	void OnResupply(const Perk perk, ERPlayer hCallback, const SubscriptionType eSubType=SubscriptionType_Roller)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteFunction(hCallback);
+		hData.WriteCell(eSubType);
+		hData.WriteCell(perk);
+
+		this._OnResupply.Push(hData);
+	}
+
+	void Resupply(const int client)
+	{
+		Perk clientPerk = GetDispatchPerk(client);
+
+		for (int i = 0; i < this._OnResupply.Length; ++i)
+		{
+			DataPack hData = this._OnResupply.Get(i);
+			hData.Reset();
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+
+			if (view_as<SubscriptionType>(hData.ReadCell()) == SubscriptionType_Roller)
+			{
+				if (clientPerk != hData.ReadCell())
+				{
+					Call_Cancel();
+					continue;
+				}
+			}
+
+			Call_PushCell(client);
+			Call_Finish();
+		}
+	}
+
+	void OnVoice(const Perk perk, ERPlayer hCallback)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteCell(perk);
+		hData.WriteFunction(hCallback);
+
+		this._OnVoice.Push(hData);
+	}
+
+	void Voice(const int client)
+	{
+		Perk perk = GetDispatchPerk(client);
+		if (perk == null)
+			return;
+
+		for (int i = 0; i < this._OnVoice.Length; ++i)
+		{
+			DataPack hData = this._OnVoice.Get(i);
+			hData.Reset();
+
+			if (perk != hData.ReadCell())
+				continue;
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushCell(client);
+			Call_Finish();
+		}
+	}
+
+	void OnSound(const Perk perk, ERSound hCallback)
+	{
+		DataPack hData = new DataPack();
+		hData.WriteCell(perk);
+		hData.WriteFunction(hCallback);
+
+		this._OnSound.Push(hData);
+	}
+
+	bool Sound(const int client, const char[] sClassname)
+	{
+		Perk perk = GetDispatchPerk(client);
+		if (perk == null)
+			return true;
+
+		bool bAllow = true;
+
+		for (int i = 0; i < this._OnSound.Length; ++i)
+		{
+			DataPack hData = this._OnSound.Get(i);
+			hData.Reset();
+
+			if (perk != hData.ReadCell())
+				continue;
+
+			Call_StartFunction(INVALID_HANDLE, hData.ReadFunction());
+			Call_PushCell(client);
+			Call_PushString(sClassname);
+
+			bool bResult = true;
+			Call_Finish(bResult);
+
+			bAllow &= bResult;
+		}
+
+		return bAllow;
+	}
+}
+
+EventRegistrar g_AllEvents[RTD_EFFECT_COUNT];
+
 #include "rtd/stocks.sp"
 #include "rtd/parsing.sp"
 
@@ -2150,6 +3129,10 @@ bool g_ActiveInstant;
 methodmap Perk < StringMap
 {
     public Perk() { return view_as<Perk>(new StringMap()); }
+    property int Id
+    {
+        public get() { int id; this.GetValue("m_Id", id); return id; }
+    }
     property int Time
     {
         public get() { return this == g_ActivePerk && g_ActiveInstant ? -1 : this.DefaultTime; }
@@ -2257,6 +3240,7 @@ methodmap PerkContainer < StringMap
     public Perk Add(const char[] token, const char[] callback, const char[] init, const char[] classes, const char[] weapons, int time)
     {
         Perk perk = new Perk();
+        perk.SetValue("m_Id", g_hPerkTokenMapper.Length);
         perk.SetString("m_Token", token);
         perk.SetString("m_Call", callback);
         perk.SetString("m_Init", init);
@@ -2312,114 +3296,1100 @@ enum AbilityNotice
 
 methodmap AbilityNotifier
 {
-    public void Attack(int client) { NotifyAbility(client, Notice_Attack); }
-    public void PlayerDamage(int client, int damage) { NotifyAbility(client, Notice_Damage, 0, 0, damage); }
-    public void PlayersIgnited(int client, int count) { NotifyAbility(client, Notice_Ignited, count); }
-    public void Dispenser(int client) { NotifyAbility(client, Notice_Dispenser); }
-    public void DispenserSpawned(int client, int count, int maximum) { NotifyAbility(client, Notice_DispenserSpawned, count, maximum); }
-    public void Sentry(int client) { NotifyAbility(client, Notice_Sentry); }
-    public void SentrySpawned(int client, int count, int maximum) { NotifyAbility(client, Notice_SentrySpawned, count, maximum); }
+    public void Attack(int client) { NotifySpecificAbility(view_as<int>(this), client, Notice_Attack); }
+    public void PlayerDamage(int client, int damage) { NotifySpecificAbility(view_as<int>(this), client, Notice_Damage, 0, 0, damage); }
+    public void PlayersIgnited(int client, int count) { NotifySpecificAbility(view_as<int>(this), client, Notice_Ignited, count); }
+    public void Dispenser(int client) { NotifySpecificAbility(view_as<int>(this), client, Notice_Dispenser); }
+    public void DispenserSpawned(int client, int count, int maximum) { NotifySpecificAbility(view_as<int>(this), client, Notice_DispenserSpawned, count, maximum); }
+    public void Sentry(int client) { NotifySpecificAbility(view_as<int>(this), client, Notice_Sentry); }
+    public void SentrySpawned(int client, int count, int maximum) { NotifySpecificAbility(view_as<int>(this), client, Notice_SentrySpawned, count, maximum); }
 }
 
-AbilityNotifier AbilityNotify;
 // Route notices from the original effects through this adapter without editing
 // the shared RTD files. Only explicitly configured HUD notices are displayed.
-#define Notify AbilityNotify
-// Only compile the retained effects into this subplugin.
-ClientFlags g_eInGodmode; // Compatibility flag read by the original Sickness helper; remains unset.
-// Own delayed effect work without changing the shared RTD sources. Cache timers
-// already invalidate their DataPacks on removal; stock speed timers finish cleanup.
-#define CreateTimer CreateEffectTimer
-#define CreateDataTimer CreateEffectDataTimer
+// Each original callback is compiled against its own cache and roller store.
+// No context switch is required when SourceMod calls an SDK hook directly.
+ClientFlags g_eInGodmode;
+#undef Cache
+#undef g_hRollers
+#undef Events
+
+// Effect 0: toxic
+#define Cache g_AllCache[0]
+#define g_hRollers g_AllRollers[0]
+#define Events g_AllEvents[0]
+#define Notify view_as<AbilityNotifier>(0)
 #define CloseHandle CloseEffectHandle
-#define SDKHook HookEffectEntity
 #include "rtd/perks/toxic.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 1: noclip
+#define Cache g_AllCache[1]
+#define g_hRollers g_AllRollers[1]
+#define Events g_AllEvents[1]
+#define Notify view_as<AbilityNotifier>(1)
+#define CloseHandle CloseEffectHandle
+#define FixPotentialStuck FX1_FixPotentialStuck
+#define SetEntityGravity FX1_SetEntityGravity
+#define SetEntityMoveType FX1_SetEntityMoveType
 #include "rtd/perks/noclip.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef FixPotentialStuck
+#undef SetEntityGravity
+#undef SetEntityMoveType
+
+// Effect 2: infiniteammo
+#define Cache g_AllCache[2]
+#define g_hRollers g_AllRollers[2]
+#define Events g_AllEvents[2]
+#define Notify view_as<AbilityNotifier>(2)
+#define CloseHandle CloseEffectHandle
+#define SetEntPropFloat FX2_SetEntPropFloat
 #include "rtd/perks/infiniteammo.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SetEntPropFloat
+
+// Effect 3: scarybullets
+#define Cache g_AllCache[3]
+#define g_hRollers g_AllRollers[3]
+#define Events g_AllEvents[3]
+#define Notify view_as<AbilityNotifier>(3)
+#define CloseHandle CloseEffectHandle
 #include "rtd/perks/scarybullets.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 4: spawnsentry
+#define Cache g_AllCache[4]
+#define g_hRollers g_AllRollers[4]
+#define Events g_AllEvents[4]
+#define Notify view_as<AbilityNotifier>(4)
+#define CloseHandle CloseEffectHandle
+#define RemovePerk FX4_RemovePerk
+#define SetEntPropFloat FX4_SetEntPropFloat
 #include "rtd/perks/spawnsentry.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef RemovePerk
+#undef SetEntPropFloat
+
+// Effect 5: homingprojectiles
+#define Cache g_AllCache[5]
+#define g_hRollers g_AllRollers[5]
+#define Events g_AllEvents[5]
+#define Notify view_as<AbilityNotifier>(5)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX5_CreateTimer
+#define TF2_AddCondition FX5_AddCondition
+#define TF2_RemoveCondition FX5_RemoveCondition
 #include "rtd/perks/homingprojectiles.sp"
+#undef TF2_AddCondition
+#undef TF2_RemoveCondition
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+
+// Effect 6: explode
+#define Cache g_AllCache[6]
+#define g_hRollers g_AllRollers[6]
+#define Events g_AllEvents[6]
+#define Notify view_as<AbilityNotifier>(6)
+#define CloseHandle CloseEffectHandle
+#define SDKHook FX6_SDKHook
+#define RemovePerk FX6_RemovePerk
 #include "rtd/perks/explode.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SDKHook
+#undef RemovePerk
+
+// Effect 7: snail
+#define Cache g_AllCache[7]
+#define g_hRollers g_AllRollers[7]
+#define Events g_AllEvents[7]
+#define Notify view_as<AbilityNotifier>(7)
+#define CloseHandle CloseEffectHandle
+#define SetSpeedEx FX7_SetSpeedEx
 #include "rtd/perks/snail.sp"
-// Keep original cosmetics hidden instead of deleting them. Removing Frozen can
-// then restore their alpha without a resupply that regenerates an FF2 loadout.
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SetSpeedEx
+
+// Effect 8: frozen
+#define Cache g_AllCache[8]
+#define g_hRollers g_AllRollers[8]
+#define Events g_AllEvents[8]
+#define Notify view_as<AbilityNotifier>(8)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX8_CreateTimer
+#define SDKHook FX8_SDKHook
+#define RemovePerk FX8_RemovePerk
+#define SetEntityMoveType FX8_SetEntityMoveType
+#define ApplyPreventCapture FX8_ApplyPreventCapture
+#define RemovePreventCapture FX8_RemovePreventCapture
 #define RemoveEntity Ability_HideFrozenWearable
 #include "rtd/perks/frozen.sp"
 #undef RemoveEntity
-#include "rtd/perks/timebomb.sp"
-#include "rtd/perks/ignition.sp"
-#include "rtd/perks/lowhealth.sp"
-#include "rtd/perks/drugged.sp"
-#include "rtd/perks/blind.sp"
-#include "rtd/perks/striptomelee.sp"
-#include "rtd/perks/beacon.sp"
-#include "rtd/perks/forcedtaunt.sp"
-#include "rtd/perks/monochromia.sp"
-#include "rtd/perks/earthquake.sp"
-#include "rtd/perks/funnyfeeling.sp"
-#include "rtd/perks/badsauce.sp"
-#include "rtd/perks/spawndispenser.sp"
-#include "rtd/perks/infinitejump.sp"
-#include "rtd/perks/powerfulhits.sp"
-#include "rtd/perks/bighead.sp"
-#include "rtd/perks/tinymann.sp"
-#include "rtd/perks/firework.sp"
-#include "rtd/perks/deadlyvoice.sp"
-#include "rtd/perks/eyeforaneye.sp"
-#include "rtd/perks/weakened.sp"
-#include "rtd/perks/necromash.sp"
-#include "rtd/perks/extraammo.sp"
-#include "rtd/perks/suffocation.sp"
-#include "rtd/perks/fasthands.sp"
-#include "rtd/perks/outline.sp"
-#include "rtd/perks/teamcriticals.sp"
-#include "rtd/perks/firetimebomb.sp"
-#include "rtd/perks/firebreath.sp"
-#include "rtd/perks/strongrecoil.sp"
-#include "rtd/perks/cursed.sp"
-#include "rtd/perks/extrathrowables.sp"
-#include "rtd/perks/explosivearrows.sp"
-#include "rtd/perks/inclineproblem.sp"
-#include "rtd/perks/springshoes.sp"
-#include "rtd/perks/lag.sp"
-#include "rtd/perks/drugbullets.sp"
-#include "rtd/perks/longmelee.sp"
-#include "rtd/perks/hatthrow.sp"
-#include "rtd/perks/madaraswhistle.sp"
-#include "rtd/perks/sickness.sp"
-#include "rtd/perks/wastedroll.sp"
-#include "rtd/perks/drunkwalk.sp"
-#include "rtd/perks/hellsreach.sp"
-#include "rtd/perks/cursedprojectiles.sp"
-#include "rtd/perks/vampire.sp"
-#include "rtd/perks/batswarm.sp"
-#include "rtd/perks/pumpkintrail.sp"
-#include "rtd/perks/acallbeyond.sp"
-#include "rtd/perks/smite.sp"
-#include "rtd/perks/overhealbonus.sp"
-#include "rtd/perks/sunlightspear.sp"
-#include "rtd/perks/eldenstars.sp"
-#include "rtd/perks/frog.sp"
-#include "rtd/perks/paranoia.sp"
-#include "rtd/perks/heavyrockets.sp"
-#include "rtd/perks/weaponmixup.sp"
-#include "rtd/perks/autoheal.sp"
-#include "rtd/perks/teamautoheal.sp"
-#undef SDKHook
-#undef CloseHandle
-#undef CreateDataTimer
-#undef CreateTimer
+#undef Cache
+#undef g_hRollers
+#undef Events
 #undef Notify
+#undef CloseHandle
+#undef CreateTimer
+#undef SDKHook
+#undef RemovePerk
+#undef SetEntityMoveType
+#undef ApplyPreventCapture
+#undef RemovePreventCapture
+
+// Effect 9: timebomb
+#define Cache g_AllCache[9]
+#define g_hRollers g_AllRollers[9]
+#define Events g_AllEvents[9]
+#define Notify view_as<AbilityNotifier>(9)
+#define CloseHandle CloseEffectHandle
+#define SDKHook FX9_SDKHook
+#include "rtd/perks/timebomb.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SDKHook
+
+// Effect 10: ignition
+#define Cache g_AllCache[10]
+#define g_hRollers g_AllRollers[10]
+#define Events g_AllEvents[10]
+#define Notify view_as<AbilityNotifier>(10)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/ignition.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 11: lowhealth
+#define Cache g_AllCache[11]
+#define g_hRollers g_AllRollers[11]
+#define Events g_AllEvents[11]
+#define Notify view_as<AbilityNotifier>(11)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/lowhealth.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 12: drugged
+#define Cache g_AllCache[12]
+#define g_hRollers g_AllRollers[12]
+#define Events g_AllEvents[12]
+#define Notify view_as<AbilityNotifier>(12)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/drugged.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 13: blind
+#define Cache g_AllCache[13]
+#define g_hRollers g_AllRollers[13]
+#define Events g_AllEvents[13]
+#define Notify view_as<AbilityNotifier>(13)
+#define CloseHandle CloseEffectHandle
+#define SetOverlay FX13_SetOverlay
+#include "rtd/perks/blind.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SetOverlay
+
+// Effect 14: striptomelee
+#define Cache g_AllCache[14]
+#define g_hRollers g_AllRollers[14]
+#define Events g_AllEvents[14]
+#define Notify view_as<AbilityNotifier>(14)
+#define CloseHandle CloseEffectHandle
+#define SDKHook FX14_SDKHook
+#define RemovePerk FX14_RemovePerk
+#define SetEntPropFloat FX14_SetEntPropFloat
+#include "rtd/perks/striptomelee.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SDKHook
+#undef RemovePerk
+#undef SetEntPropFloat
+
+// Effect 15: beacon
+#define Cache g_AllCache[15]
+#define g_hRollers g_AllRollers[15]
+#define Events g_AllEvents[15]
+#define Notify view_as<AbilityNotifier>(15)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/beacon.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 16: forcedtaunt
+#define Cache g_AllCache[16]
+#define g_hRollers g_AllRollers[16]
+#define Events g_AllEvents[16]
+#define Notify view_as<AbilityNotifier>(16)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/forcedtaunt.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 17: monochromia
+#define Cache g_AllCache[17]
+#define g_hRollers g_AllRollers[17]
+#define Events g_AllEvents[17]
+#define Notify view_as<AbilityNotifier>(17)
+#define CloseHandle CloseEffectHandle
+#define SetOverlay FX17_SetOverlay
+#include "rtd/perks/monochromia.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SetOverlay
+
+// Effect 18: earthquake
+#define Cache g_AllCache[18]
+#define g_hRollers g_AllRollers[18]
+#define Events g_AllEvents[18]
+#define Notify view_as<AbilityNotifier>(18)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/earthquake.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 19: funnyfeeling
+#define Cache g_AllCache[19]
+#define g_hRollers g_AllRollers[19]
+#define Events g_AllEvents[19]
+#define Notify view_as<AbilityNotifier>(19)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/funnyfeeling.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 20: badsauce
+#define Cache g_AllCache[20]
+#define g_hRollers g_AllRollers[20]
+#define Events g_AllEvents[20]
+#define Notify view_as<AbilityNotifier>(20)
+#define CloseHandle CloseEffectHandle
+#define RemovePerk FX20_RemovePerk
+#include "rtd/perks/badsauce.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef RemovePerk
+
+// Effect 21: spawndispenser
+#define Cache g_AllCache[21]
+#define g_hRollers g_AllRollers[21]
+#define Events g_AllEvents[21]
+#define Notify view_as<AbilityNotifier>(21)
+#define CloseHandle CloseEffectHandle
+#define RemovePerk FX21_RemovePerk
+#include "rtd/perks/spawndispenser.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef RemovePerk
+
+// Effect 22: infinitejump
+#define Cache g_AllCache[22]
+#define g_hRollers g_AllRollers[22]
+#define Events g_AllEvents[22]
+#define Notify view_as<AbilityNotifier>(22)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/infinitejump.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 23: powerfulhits
+#define Cache g_AllCache[23]
+#define g_hRollers g_AllRollers[23]
+#define Events g_AllEvents[23]
+#define Notify view_as<AbilityNotifier>(23)
+#define CloseHandle CloseEffectHandle
+#define TF2Attrib_SetByDefIndex FX23_TF2Attrib_SetByDefIndex
+#define TF2Attrib_RemoveByDefIndex FX23_TF2Attrib_RemoveByDefIndex
+#include "rtd/perks/powerfulhits.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef TF2Attrib_SetByDefIndex
+#undef TF2Attrib_RemoveByDefIndex
+
+// Effect 24: bighead
+#define Cache g_AllCache[24]
+#define g_hRollers g_AllRollers[24]
+#define Events g_AllEvents[24]
+#define Notify view_as<AbilityNotifier>(24)
+#define CloseHandle CloseEffectHandle
+#define TF2Attrib_SetByDefIndex FX24_TF2Attrib_SetByDefIndex
+#define TF2Attrib_RemoveByDefIndex FX24_TF2Attrib_RemoveByDefIndex
+#define SetEntPropFloat FX24_SetEntPropFloat
+#include "rtd/perks/bighead.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef TF2Attrib_SetByDefIndex
+#undef TF2Attrib_RemoveByDefIndex
+#undef SetEntPropFloat
+
+// Effect 25: tinymann
+#define Cache g_AllCache[25]
+#define g_hRollers g_AllRollers[25]
+#define Events g_AllEvents[25]
+#define Notify view_as<AbilityNotifier>(25)
+#define CloseHandle CloseEffectHandle
+#define FixPotentialStuck FX25_FixPotentialStuck
+#define TF2Attrib_SetByDefIndex FX25_TF2Attrib_SetByDefIndex
+#define TF2Attrib_RemoveByDefIndex FX25_TF2Attrib_RemoveByDefIndex
+#define SetEntPropFloat FX25_SetEntPropFloat
+#define TF2_AddCondition FX25_AddSpeedBoost
+#define TF2_RemoveCondition FX25_RemoveSpeedBoost
+#include "rtd/perks/tinymann.sp"
+#undef TF2_AddCondition
+#undef TF2_RemoveCondition
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef FixPotentialStuck
+#undef TF2Attrib_SetByDefIndex
+#undef TF2Attrib_RemoveByDefIndex
+#undef SetEntPropFloat
+
+// Effect 26: firework
+#define Cache g_AllCache[26]
+#define g_hRollers g_AllRollers[26]
+#define Events g_AllEvents[26]
+#define Notify view_as<AbilityNotifier>(26)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX26_CreateTimer
+#include "rtd/perks/firework.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+
+// Effect 27: deadlyvoice
+#define Cache g_AllCache[27]
+#define g_hRollers g_AllRollers[27]
+#define Events g_AllEvents[27]
+#define Notify view_as<AbilityNotifier>(27)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/deadlyvoice.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 28: eyeforaneye
+#define Cache g_AllCache[28]
+#define g_hRollers g_AllRollers[28]
+#define Events g_AllEvents[28]
+#define Notify view_as<AbilityNotifier>(28)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/eyeforaneye.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 29: weakened
+#define Cache g_AllCache[29]
+#define g_hRollers g_AllRollers[29]
+#define Events g_AllEvents[29]
+#define Notify view_as<AbilityNotifier>(29)
+#define CloseHandle CloseEffectHandle
+#define SDKHook FX29_SDKHook
+#include "rtd/perks/weakened.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SDKHook
+
+// Effect 30: necromash
+#define Cache g_AllCache[30]
+#define g_hRollers g_AllRollers[30]
+#define Events g_AllEvents[30]
+#define Notify view_as<AbilityNotifier>(30)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX30_CreateTimer
+#define CreateDataTimer FX30_CreateDataTimer
+#include "rtd/perks/necromash.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+#undef CreateDataTimer
+
+// Effect 31: extraammo
+#define Cache g_AllCache[31]
+#define g_hRollers g_AllRollers[31]
+#define Events g_AllEvents[31]
+#define Notify view_as<AbilityNotifier>(31)
+#define CloseHandle CloseEffectHandle
+#define SetEntPropFloat FX31_SetEntPropFloat
+#include "rtd/perks/extraammo.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SetEntPropFloat
+
+// Effect 32: suffocation
+#define Cache g_AllCache[32]
+#define g_hRollers g_AllRollers[32]
+#define Events g_AllEvents[32]
+#define Notify view_as<AbilityNotifier>(32)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/suffocation.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 33: fasthands
+#define Cache g_AllCache[33]
+#define g_hRollers g_AllRollers[33]
+#define Events g_AllEvents[33]
+#define Notify view_as<AbilityNotifier>(33)
+#define CloseHandle CloseEffectHandle
+#define TF2Attrib_SetByDefIndex FX33_TF2Attrib_SetByDefIndex
+#define TF2Attrib_RemoveByDefIndex FX33_TF2Attrib_RemoveByDefIndex
+#include "rtd/perks/fasthands.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef TF2Attrib_SetByDefIndex
+#undef TF2Attrib_RemoveByDefIndex
+
+// Effect 34: outline
+#define Cache g_AllCache[34]
+#define g_hRollers g_AllRollers[34]
+#define Events g_AllEvents[34]
+#define Notify view_as<AbilityNotifier>(34)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/outline.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 35: teamcriticals
+#define Cache g_AllCache[35]
+#define g_hRollers g_AllRollers[35]
+#define Events g_AllEvents[35]
+#define Notify view_as<AbilityNotifier>(35)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/teamcriticals.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 36: firetimebomb
+#define Cache g_AllCache[36]
+#define g_hRollers g_AllRollers[36]
+#define Events g_AllEvents[36]
+#define Notify view_as<AbilityNotifier>(36)
+#define CloseHandle CloseEffectHandle
+#define SDKHook FX36_SDKHook
+#include "rtd/perks/firetimebomb.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SDKHook
+
+// Effect 37: firebreath
+#define Cache g_AllCache[37]
+#define g_hRollers g_AllRollers[37]
+#define Events g_AllEvents[37]
+#define Notify view_as<AbilityNotifier>(37)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/firebreath.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 38: strongrecoil
+#define Cache g_AllCache[38]
+#define g_hRollers g_AllRollers[38]
+#define Events g_AllEvents[38]
+#define Notify view_as<AbilityNotifier>(38)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/strongrecoil.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 39: cursed
+#define Cache g_AllCache[39]
+#define g_hRollers g_AllRollers[39]
+#define Events g_AllEvents[39]
+#define Notify view_as<AbilityNotifier>(39)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/cursed.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 40: extrathrowables
+#define Cache g_AllCache[40]
+#define g_hRollers g_AllRollers[40]
+#define Events g_AllEvents[40]
+#define Notify view_as<AbilityNotifier>(40)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/extrathrowables.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 41: explosivearrows
+#define Cache g_AllCache[41]
+#define g_hRollers g_AllRollers[41]
+#define Events g_AllEvents[41]
+#define Notify view_as<AbilityNotifier>(41)
+#define CloseHandle CloseEffectHandle
+#define SDKHook FX41_SDKHook
+#include "rtd/perks/explosivearrows.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SDKHook
+
+// Effect 42: inclineproblem
+#define Cache g_AllCache[42]
+#define g_hRollers g_AllRollers[42]
+#define Events g_AllEvents[42]
+#define Notify view_as<AbilityNotifier>(42)
+#define CloseHandle CloseEffectHandle
+#define SetEntPropFloat FX42_SetEntPropFloat
+#include "rtd/perks/inclineproblem.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SetEntPropFloat
+
+// Effect 43: springshoes
+#define Cache g_AllCache[43]
+#define g_hRollers g_AllRollers[43]
+#define Events g_AllEvents[43]
+#define Notify view_as<AbilityNotifier>(43)
+#define CloseHandle CloseEffectHandle
+#define TF2Attrib_SetByDefIndex FX43_TF2Attrib_SetByDefIndex
+#define TF2Attrib_RemoveByDefIndex FX43_TF2Attrib_RemoveByDefIndex
+#include "rtd/perks/springshoes.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef TF2Attrib_SetByDefIndex
+#undef TF2Attrib_RemoveByDefIndex
+
+// Effect 44: lag
+#define Cache g_AllCache[44]
+#define g_hRollers g_AllRollers[44]
+#define Events g_AllEvents[44]
+#define Notify view_as<AbilityNotifier>(44)
+#define CloseHandle CloseEffectHandle
+#define FixPotentialStuck FX44_FixPotentialStuck
+#include "rtd/perks/lag.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef FixPotentialStuck
+
+// Effect 45: drugbullets
+#define Cache g_AllCache[45]
+#define g_hRollers g_AllRollers[45]
+#define Events g_AllEvents[45]
+#define Notify view_as<AbilityNotifier>(45)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/drugbullets.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 46: longmelee
+#define Cache g_AllCache[46]
+#define g_hRollers g_AllRollers[46]
+#define Events g_AllEvents[46]
+#define Notify view_as<AbilityNotifier>(46)
+#define CloseHandle CloseEffectHandle
+#define TF2Attrib_SetByDefIndex FX46_TF2Attrib_SetByDefIndex
+#define TF2Attrib_RemoveByDefIndex FX46_TF2Attrib_RemoveByDefIndex
+#include "rtd/perks/longmelee.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef TF2Attrib_SetByDefIndex
+#undef TF2Attrib_RemoveByDefIndex
+
+// Effect 47: hatthrow
+#define Cache g_AllCache[47]
+#define g_hRollers g_AllRollers[47]
+#define Events g_AllEvents[47]
+#define Notify view_as<AbilityNotifier>(47)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX47_CreateTimer
+#define SDKHook FX47_SDKHook
+#define SetEntityMoveType FX47_SetEntityMoveType
+#include "rtd/perks/hatthrow.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+#undef SDKHook
+#undef SetEntityMoveType
+
+// Effect 48: madaraswhistle
+#define Cache g_AllCache[48]
+#define g_hRollers g_AllRollers[48]
+#define Events g_AllEvents[48]
+#define Notify view_as<AbilityNotifier>(48)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX48_CreateTimer
+#include "rtd/perks/madaraswhistle.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+
+// Effect 49: sickness
+#define Cache g_AllCache[49]
+#define g_hRollers g_AllRollers[49]
+#define Events g_AllEvents[49]
+#define Notify view_as<AbilityNotifier>(49)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX49_CreateTimer
+#include "rtd/perks/sickness.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+
+// Effect 50: wastedroll
+#define Cache g_AllCache[50]
+#define g_hRollers g_AllRollers[50]
+#define Events g_AllEvents[50]
+#define Notify view_as<AbilityNotifier>(50)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/wastedroll.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 51: drunkwalk
+#define Cache g_AllCache[51]
+#define g_hRollers g_AllRollers[51]
+#define Events g_AllEvents[51]
+#define Notify view_as<AbilityNotifier>(51)
+#define CloseHandle CloseEffectHandle
+#define SetSpeed FX51_SetSpeed
+#define ResetSpeed FX51_ResetSpeed
+#include "rtd/perks/drunkwalk.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SetSpeed
+#undef ResetSpeed
+
+// Effect 52: hellsreach
+#define Cache g_AllCache[52]
+#define g_hRollers g_AllRollers[52]
+#define Events g_AllEvents[52]
+#define Notify view_as<AbilityNotifier>(52)
+#define CloseHandle CloseEffectHandle
+#define SetSpeed FX52_SetSpeed
+#define ResetSpeed FX52_ResetSpeed
+#include "rtd/perks/hellsreach.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SetSpeed
+#undef ResetSpeed
+
+// Effect 53: cursedprojectiles
+#define Cache g_AllCache[53]
+#define g_hRollers g_AllRollers[53]
+#define Events g_AllEvents[53]
+#define Notify view_as<AbilityNotifier>(53)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX53_CreateTimer
+#define SDKHook FX53_SDKHook
+#include "rtd/perks/cursedprojectiles.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+#undef SDKHook
+
+// Effect 54: vampire
+#define Cache g_AllCache[54]
+#define g_hRollers g_AllRollers[54]
+#define Events g_AllEvents[54]
+#define Notify view_as<AbilityNotifier>(54)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX54_CreateTimer
+#include "rtd/perks/vampire.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+
+// Effect 55: batswarm
+#define Cache g_AllCache[55]
+#define g_hRollers g_AllRollers[55]
+#define Events g_AllEvents[55]
+#define Notify view_as<AbilityNotifier>(55)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX55_CreateTimer
+#define SetEntityMoveType FX55_SetEntityMoveType
+#define SetSpeedEx FX55_SetSpeedEx
+#define TF2_AddCondition FX55_AddCondition
+#include "rtd/perks/batswarm.sp"
+#undef TF2_AddCondition
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+#undef SetEntityMoveType
+#undef SetSpeedEx
+
+// Effect 56: pumpkintrail
+#define Cache g_AllCache[56]
+#define g_hRollers g_AllRollers[56]
+#define Events g_AllEvents[56]
+#define Notify view_as<AbilityNotifier>(56)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX56_CreateTimer
+#include "rtd/perks/pumpkintrail.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+
+// Effect 57: acallbeyond
+#define Cache g_AllCache[57]
+#define g_hRollers g_AllRollers[57]
+#define Events g_AllEvents[57]
+#define Notify view_as<AbilityNotifier>(57)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX57_CreateTimer
+#include "rtd/perks/acallbeyond.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+
+// Effect 58: smite
+#define Cache g_AllCache[58]
+#define g_hRollers g_AllRollers[58]
+#define Events g_AllEvents[58]
+#define Notify view_as<AbilityNotifier>(58)
+#define CloseHandle CloseEffectHandle
+#define SDKHook FX58_SDKHook
+#define SetSpeed FX58_SetSpeed
+#define ResetSpeed FX58_ResetSpeed
+#define TF2_AddCondition FX58_AddCondition
+#include "rtd/perks/smite.sp"
+#undef TF2_AddCondition
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef SDKHook
+#undef SetSpeed
+#undef ResetSpeed
+
+// Effect 59: overhealbonus
+#define Cache g_AllCache[59]
+#define g_hRollers g_AllRollers[59]
+#define Events g_AllEvents[59]
+#define Notify view_as<AbilityNotifier>(59)
+#define CloseHandle CloseEffectHandle
+#define TF2Attrib_SetByDefIndex FX59_TF2Attrib_SetByDefIndex
+#define TF2Attrib_RemoveByDefIndex FX59_TF2Attrib_RemoveByDefIndex
+#include "rtd/perks/overhealbonus.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef TF2Attrib_SetByDefIndex
+#undef TF2Attrib_RemoveByDefIndex
+
+// Effect 60: sunlightspear
+#define Cache g_AllCache[60]
+#define g_hRollers g_AllRollers[60]
+#define Events g_AllEvents[60]
+#define Notify view_as<AbilityNotifier>(60)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX60_CreateTimer
+#define SDKHook FX60_SDKHook
+#define SetEntityMoveType FX60_SetEntityMoveType
+#include "rtd/perks/sunlightspear.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+#undef SDKHook
+#undef SetEntityMoveType
+
+// Effect 61: eldenstars
+#define Cache g_AllCache[61]
+#define g_hRollers g_AllRollers[61]
+#define Events g_AllEvents[61]
+#define Notify view_as<AbilityNotifier>(61)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX61_CreateTimer
+#define SDKHook FX61_SDKHook
+#include "rtd/perks/eldenstars.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+#undef SDKHook
+
+// Effect 62: frog
+#define Cache g_AllCache[62]
+#define g_hRollers g_AllRollers[62]
+#define Events g_AllEvents[62]
+#define Notify view_as<AbilityNotifier>(62)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/frog.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 63: paranoia
+#define Cache g_AllCache[63]
+#define g_hRollers g_AllRollers[63]
+#define Events g_AllEvents[63]
+#define Notify view_as<AbilityNotifier>(63)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/paranoia.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 64: heavyrockets
+#define Cache g_AllCache[64]
+#define g_hRollers g_AllRollers[64]
+#define Events g_AllEvents[64]
+#define Notify view_as<AbilityNotifier>(64)
+#define CloseHandle CloseEffectHandle
+#define CreateTimer FX64_CreateTimer
+#include "rtd/perks/heavyrockets.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef CreateTimer
+
+// Effect 65: weaponmixup
+#define Cache g_AllCache[65]
+#define g_hRollers g_AllRollers[65]
+#define Events g_AllEvents[65]
+#define Notify view_as<AbilityNotifier>(65)
+#define CloseHandle CloseEffectHandle
+#define TF2Attrib_SetByDefIndex FX65_TF2Attrib_SetByDefIndex
+#define TF2Attrib_RemoveByDefIndex FX65_TF2Attrib_RemoveByDefIndex
+#include "rtd/perks/weaponmixup.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#undef TF2Attrib_SetByDefIndex
+#undef TF2Attrib_RemoveByDefIndex
+
+// Effect 66: autoheal
+#define Cache g_AllCache[66]
+#define g_hRollers g_AllRollers[66]
+#define Events g_AllEvents[66]
+#define Notify view_as<AbilityNotifier>(66)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/autoheal.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+
+// Effect 67: teamautoheal
+#define Cache g_AllCache[67]
+#define g_hRollers g_AllRollers[67]
+#define Events g_AllEvents[67]
+#define Notify view_as<AbilityNotifier>(67)
+#define CloseHandle CloseEffectHandle
+#include "rtd/perks/teamautoheal.sp"
+#undef Cache
+#undef g_hRollers
+#undef Events
+#undef Notify
+#undef CloseHandle
+#define Cache g_AllCache[g_ContextEffect]
+#define g_hRollers g_AllRollers[g_ContextEffect]
+#define Events g_AllEvents[g_ContextEffect]
 #pragma unused Notify
 #undef NoReload
 #undef Weapon
 #undef Clip
 #undef Ammo
 
+#define g_CastSerial g_CastSerialStore[g_ContextEffect]
+#define g_Applying g_ApplyingStore[g_ContextEffect]
+#define g_Removing g_RemovingStore[g_ContextEffect]
+#define g_PendingStop g_PendingStopStore[g_ContextEffect]
+#define g_OwnerUserId g_OwnerUserIdStore[g_ContextEffect]
+#define g_Sharpness g_SharpnessStore[g_ContextEffect]
+#define g_EndTimer g_EndTimerStore[g_ContextEffect]
+#define g_Text g_TextStore[g_ContextEffect]
+#define g_StartOrigin g_StartOriginStore[g_ContextEffect]
+
 bool g_Ready;
 bool g_RoundEnding;
 int g_RoundSerial;
-int g_CastSerial[MAXPLAYERS + 1];
+int g_CastSerialStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
 ArrayList g_EffectTimers;
 StringMap g_EffectEntities;
 Function g_EffectTimerCallbacks[32];
@@ -2428,14 +4398,15 @@ int g_DispatchRound = -1;
 
 enum EffectTimerField
 {
-    ET_Handle, ET_Callback, ET_Flags, ET_Round, ET_Client, ET_Cast,
+    ET_Handle, ET_Callback, ET_Flags, ET_Round, ET_Client, ET_Cast, ET_Effect,
     ET_Running, ET_Cancelled, ET_Data, ET_Size
 }
 
-Handle CreateEffectTimer(float interval, Timer callback, any data = 0, int flags = 0)
+Handle CreateEffectTimer(float interval, Timer callback, any data = 0, int flags = 0, int effect = -1)
 {
     Handle timer = CreateTimer(interval, Timer_EffectDispatch, data, flags | TIMER_FLAG_NO_MAPCHANGE);
     int entry[ET_Size];
+    entry[ET_Effect] = effect < 0 ? g_ContextEffect : effect;
     entry[ET_Handle] = view_as<int>(timer);
     int callbackId;
     while (callbackId < g_EffectTimerCallbackCount && g_EffectTimerCallbacks[callbackId] != callback)
@@ -2450,7 +4421,7 @@ Handle CreateEffectTimer(float interval, Timer callback, any data = 0, int flags
     // to the cast that created them so replacement cannot change their values.
     int client;
     if (callback == Vampire_Tick_Followup || callback == Timer_BatSwarm_ChargeEffect
-        || callback == Timer_FixAbilityStuck)
+        || callback == Timer_FixAbilityStuck || callback == Timer_NecroMash_Retry)
         client = GetClientOfUserId(data);
     else if (callback == Timer_MadarasWhistle_Attack || callback == Timer_SunlightSpear_Tick)
     {
@@ -2472,7 +4443,7 @@ Handle CreateEffectTimer(float interval, Timer callback, any data = 0, int flags
     if (IsValidClient(client))
     {
         entry[ET_Client] = GetClientUserId(client);
-        entry[ET_Cast] = g_CastSerial[client];
+        entry[ET_Cast] = g_CastSerialStore[entry[ET_Effect]][client];
     }
     g_EffectTimers.PushArray(entry);
     return timer;
@@ -2493,7 +4464,7 @@ public Action Timer_EffectDispatch(Handle timer, any data)
     g_EffectTimers.GetArray(index, entry);
     int client = GetClientOfUserId(entry[ET_Client]);
     bool stale = entry[ET_Client] && (!IsValidClient(client) || !IsPlayerAlive(client)
-        || entry[ET_Cast] != g_CastSerial[client]);
+        || entry[ET_Cast] != g_CastSerialStore[entry[ET_Effect]][client]);
     if (g_RoundEnding || entry[ET_Round] != g_RoundSerial || entry[ET_Cancelled] || stale)
     {
         DiscardEffectTimerData(entry);
@@ -2501,6 +4472,8 @@ public Action Timer_EffectDispatch(Handle timer, any data)
         return Plugin_Stop;
     }
     g_EffectTimers.Set(index, true, ET_Running);
+    int previousEffect = g_ContextEffect;
+    g_ContextEffect = entry[ET_Effect];
     int previousRound = g_DispatchRound;
     g_DispatchRound = entry[ET_Round];
     Call_StartFunction(INVALID_HANDLE, g_EffectTimerCallbacks[entry[ET_Callback]]);
@@ -2509,6 +4482,7 @@ public Action Timer_EffectDispatch(Handle timer, any data)
     int result;
     int error = Call_Finish(result);
     g_DispatchRound = previousRound;
+    g_ContextEffect = previousEffect;
     // A callback may create other timers or end the round, shifting array rows.
     index = g_EffectTimers.FindValue(view_as<int>(timer), ET_Handle);
     if (index == -1)
@@ -2561,7 +4535,7 @@ void CancelEffectTimers()
 
 // Projectiles with touch callbacks can also outlive the cast whose cache they
 // use. Keep their owner identity and cast serial until the entity is destroyed.
-void HookEffectEntity(int entity, SDKHookType type, SDKHookCB callback)
+void HookEffectEntity(int entity, SDKHookType type, SDKHookCB callback, int effect = -1)
 {
     if (callback == Event_HatThrow_OnHatTouch || callback == SunlightSpear_OnTouch
         || callback == ExplosiveArrows_ArrowTouch)
@@ -2569,11 +4543,12 @@ void HookEffectEntity(int entity, SDKHookType type, SDKHookCB callback)
         char key[16];
         IntToString(entity, key, sizeof(key));
         int client = GetEntPropEnt(entity, Prop_Send, "m_hOwnerEntity");
-        int state[3];
+        int state[4];
+        state[3] = effect < 0 ? g_ContextEffect : effect;
         if (IsValidClient(client))
         {
             state[0] = GetClientUserId(client);
-            state[1] = g_CastSerial[client];
+            state[1] = g_CastSerialStore[state[3]][client];
         }
         state[2] = g_RoundSerial;
         g_EffectEntities.SetArray(key, state, sizeof(state));
@@ -2592,12 +4567,12 @@ bool IsEffectEntityCurrent(int entity)
 {
     char key[16];
     IntToString(entity, key, sizeof(key));
-    int state[3];
+    int state[4];
     if (g_RoundEnding || !g_EffectEntities.GetArray(key, state, sizeof(state)))
         return false;
     int client = GetClientOfUserId(state[0]);
     return IsValidClient(client) && IsPlayerAlive(client)
-        && state[1] == g_CastSerial[client] && state[2] == g_RoundSerial;
+        && state[1] == g_CastSerialStore[state[3]][client] && state[2] == g_RoundSerial;
 }
 
 public Action Ability_HatTouch(int entity, int other)
@@ -2630,14 +4605,15 @@ public void OnEntityDestroyed(int entity)
     IntToString(entity, key, sizeof(key));
     g_EffectEntities.Remove(key);
 }
-bool g_Applying[MAXPLAYERS + 1];
-bool g_Removing[MAXPLAYERS + 1];
-bool g_PendingStop[MAXPLAYERS + 1];
-int g_OwnerUserId[MAXPLAYERS + 1];
+bool g_ApplyingStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
+bool g_RemovingStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
+RTDRemoveReason g_RemovalReasonStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
+bool g_PendingStopStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
+int g_OwnerUserIdStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
 int g_ClientUserId[MAXPLAYERS + 1];
-int g_Sharpness[MAXPLAYERS + 1];
+int g_SharpnessStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
 int g_ApplyDuration = 10;
-Handle g_EndTimer[MAXPLAYERS + 1];
+Handle g_EndTimerStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
 
 enum struct AbilityTextState
 {
@@ -2658,8 +4634,8 @@ enum struct AbilityTextState
     bool Timed;
 }
 
-AbilityTextState g_Text[MAXPLAYERS + 1];
-char g_NoticeOverride[MAXPLAYERS + 1][Notice_Count][512];
+AbilityTextState g_TextStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
+StringMap g_NoticeStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
 Handle g_MessageHud;
 Handle g_NoticeHud;
 static const char g_NoticeKeys[][] =
@@ -2667,21 +4643,21 @@ static const char g_NoticeKeys[][] =
     "attack", "damage", "ignited", "dispenser", "dispenser_spawned", "sentry", "sentry_spawned"
 };
 
-// Preserve the boss/player values that the original effects reset to TF2 defaults.
-float g_Gravity[MAXPLAYERS + 1];
-float g_ModelScale[MAXPLAYERS + 1];
-float g_HeadScale[MAXPLAYERS + 1];
-float g_StartOrigin[MAXPLAYERS + 1][3];
-MoveType g_MoveType[MAXPLAYERS + 1];
-RenderMode g_RenderMode[MAXPLAYERS + 1];
-int g_RenderColor[MAXPLAYERS + 1][4];
-ArrayList g_AttributeBackup[MAXPLAYERS + 1];
+// Origins are private to each cast.
+float g_StartOriginStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1][3];
+
+enum StateKind { State_Attribute, State_Gravity, State_Move, State_Model, State_Head, State_Step, State_Overlay }
+enum StateLayer { SL_Entity, SL_Kind, SL_Key, SL_Effect, SL_Client, SL_Value, SL_Present, SL_Order, SL_Size }
+ArrayList g_StateLayers;
+int g_StateOrder;
 
 public void OnPluginStart()
 {
     g_EffectTimers = new ArrayList(ET_Size);
     g_EffectEntities = new StringMap();
-    g_hRollers = new Rollers();
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+        g_AllRollers[effect] = new Rollers();
+    g_StateLayers = new ArrayList(SL_Size);
     g_hPerkContainer = new PerkContainer();
     g_MessageHud = CreateHudSynchronizer();
     g_NoticeHud = CreateHudSynchronizer();
@@ -2702,7 +4678,11 @@ public void OnPluginStart()
 
     for (int client = 1; client <= MaxClients; client++)
     {
-        Cache[client].Init(client);
+        for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+        {
+            g_ContextEffect = effect;
+            Cache[client].Init(client);
+        }
         if (IsClientInGame(client))
             OnClientPutInServer(client);
     }
@@ -2721,10 +4701,12 @@ public void OnMapStart()
     else
         g_hHoming.Clear();
 
-    Events.Init();
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+        g_AllEvents[effect].Init();
     for (int i = 0; i < g_hPerkTokenMapper.Length; i++)
     {
         Perk perk = g_hPerkContainer.GetFromId(i);
+        g_ContextEffect = perk.Id;
         char token[32], callback[64];
         perk.GetToken(token, sizeof(token));
         perk.GetInternalCall(callback, sizeof(callback));
@@ -2751,7 +4733,8 @@ public void OnMapEnd()
 {
     StopAllEffects(RTDRemove_NoPrint);
     g_Ready = false;
-    Events.Cleanup();
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+        g_AllEvents[effect].Cleanup();
 }
 
 public void OnPluginEnd()
@@ -2763,15 +4746,26 @@ public void OnPluginEnd()
 
 public void OnClientPutInServer(int client)
 {
-    ClearAbilityHud(client);
-    Cache[client].Init(client);
-    g_hRollers.Reset(client);
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        g_ContextEffect = effect;
+        ClearAbilityHud(client);
+        Cache[client].Init(client);
+        g_hRollers.Reset(client);
+        g_OwnerUserId[client] = 0;
+        g_Applying[client] = g_Removing[client] = g_PendingStop[client] = false;
+    }
+    g_ContextEffect = previous;
     g_ClientUserId[client] = GetClientUserId(client);
-    g_OwnerUserId[client] = 0;
-    g_Applying[client] = g_Removing[client] = g_PendingStop[client] = false;
     g_eInGodmode.Unset(client);
     g_eMuteNextResupply.Unset(client);
     Shared[client]._CritBoosted = 0;
+    Shared[client]._MiniBoosts = 0;
+    Shared[client]._FullBoosts = 0;
+    Shared[client]._SmiteCritUntil = 0.0;
+    Shared[client]._TinySpeedBoost = false;
+    Shared[client]._BatSpeedBuffUntil = 0.0;
     Shared[client].MaxHealth = 0;
     SDKHook(client, SDKHook_GetMaxHealth, OnGetMaxHealth);
 }
@@ -2779,11 +4773,9 @@ public void OnClientPutInServer(int client)
 public void OnClientDisconnect(int client)
 {
     if (g_Ready)
-        Events.PlayerDisconnected(client);
+        DispatchPlayerDisconnected(client);
     FF2R_OnBossRemoved(client);
-    RemovePerk(client, RTDRemove_Disconnect);
-    ClearAbilityHud(client);
-    g_hRollers.Reset(client);
+    RemoveClientEffects(client, RTDRemove_Disconnect);
     g_ClientUserId[client] = 0;
     SDKUnhook(client, SDKHook_GetMaxHealth, OnGetMaxHealth);
 }
@@ -2799,6 +4791,10 @@ public void FF2R_OnBossRemoved(int boss)
     if (g_hRollers == null || boss < 1 || boss > MaxClients)
         return;
     int owner = g_ClientUserId[boss];
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+    g_ContextEffect = effect;
     for (int client = 1; client <= MaxClients; client++)
     {
         if (g_OwnerUserId[client] == owner && owner != 0)
@@ -2806,6 +4802,8 @@ public void FF2R_OnBossRemoved(int boss)
         if (g_Text[client].Owner == owner && owner != 0)
             ClearAbilityHud(client);
     }
+    }
+    g_ContextEffect = previous;
 }
 
 public void FF2R_OnAbility(int boss, const char[] ability, AbilityData cfg)
@@ -2929,6 +4927,14 @@ bool ValidateSettings(Perk perk, ConfigData settings)
 
 void ApplyAbility(int boss, int client, Perk perk, AbilityData cfg, int duration)
 {
+    int previous = g_ContextEffect;
+    g_ContextEffect = perk.Id;
+    ApplyOneAbility(boss, client, perk, cfg, duration);
+    g_ContextEffect = previous;
+}
+
+void ApplyOneAbility(int boss, int client, Perk perk, AbilityData cfg, int duration)
+{
     if (g_Applying[client] || g_Removing[client])
         return;
     if (g_hRollers.GetInRoll(client))
@@ -2944,8 +4950,7 @@ void ApplyAbility(int boss, int client, Perk perk, AbilityData cfg, int duration
     int originalTime = perk.DefaultTime;
     bool instant = cfg.GetBool("instant", false);
     bool timed = originalTime >= 0 && !instant;
-    if (timed)
-        SavePlayerState(client);
+    GetClientAbsOrigin(client, g_StartOrigin[client]);
     Shared[client].ClassForPerk = TF2_GetPlayerClass(client);
     Shared[client].MaxHealth = GetTargetMaxHealth(client);
     g_Applying[client] = true;
@@ -2985,10 +4990,22 @@ void ApplyAbility(int boss, int client, Perk perk, AbilityData cfg, int duration
         if (g_PendingStop[client] || !IsPlayerAlive(client))
             RemovePerk(client, RTDRemove_NoPrint);
         else
-            g_EndTimer[client] = CreateTimer(float(duration), Timer_EndEffect, GetClientUserId(client));
+        {
+            DataPack end;
+            g_EndTimer[client] = CreateDataTimer(float(duration), Timer_EndEffect, end, TIMER_FLAG_NO_MAPCHANGE);
+            end.WriteCell(GetClientUserId(client));
+            end.WriteCell(g_ContextEffect);
+        }
     }
     else
     {
+        if (g_PendingStop[client] || g_RoundEnding || !IsValidClient(client) || !IsPlayerAlive(client))
+        {
+            Cache[client].Cleanup();
+            ReleaseEffectState(g_ContextEffect, client);
+            g_CastSerial[client]++;
+            ClearAbilityHud(client);
+        }
         g_OwnerUserId[client] = 0;
     }
 }
@@ -3019,12 +5036,14 @@ void ConfigureAbilityText(int client, int boss, AbilityData cfg, bool timed, int
 
     cfg.GetString("message", g_Text[client].Message, sizeof(g_Text[].Message));
     g_Text[client].MainUntil = timed ? g_Text[client].EndsAt : GetGameTime() + g_Text[client].Lifetime;
+    delete g_NoticeStore[g_ContextEffect][client];
+    g_NoticeStore[g_ContextEffect][client] = new StringMap();
     ConfigData messages = cfg.GetSection("messages");
     for (int i = 0; i < view_as<int>(Notice_Count); i++)
     {
-        g_NoticeOverride[client][i][0] = '\0';
-        if (messages)
-            messages.GetString(g_NoticeKeys[i], g_NoticeOverride[client][i], sizeof(g_NoticeOverride[][]));
+        char message[512];
+        if (messages && messages.GetString(g_NoticeKeys[i], message, sizeof(message)) && message[0])
+            g_NoticeStore[g_ContextEffect][client].SetString(g_NoticeKeys[i], message);
     }
     UpdateAbilityText(client);
 }
@@ -3049,40 +5068,39 @@ void FormatAbilityText(int client, const char[] pattern, char[] buffer, int leng
 
 void DrawAbilityText(int client, bool notice)
 {
-    if (IsFakeClient(client))
-        return;
-    char message[1024];
-    if (notice)
-        FormatAbilityText(client, g_Text[client].Notice, message, sizeof(message));
-    else
-        FormatAbilityText(client, g_Text[client].Message, message, sizeof(message));
-    float y = g_Text[client].Y;
-    if (notice)
-        y = y < 0.0 ? 0.56 : Min(y + 0.065, 0.95);
-    SetHudTextParams(g_Text[client].X, y, 0.35,
-        g_Text[client].Color[0], g_Text[client].Color[1], g_Text[client].Color[2], g_Text[client].Color[3],
-        0, 0.0, 0.0, 0.0);
-    ShowSyncHudText(client, notice ? g_NoticeHud : g_MessageHud, "%s", message);
+    if (IsFakeClient(client)) return;
+    int previous = g_ContextEffect, style = -1;
+    char combined[2048], line[1024];
+    float now = GetGameTime();
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        g_ContextEffect = effect;
+        if (notice ? !g_Text[client].Notice[0] || g_Text[client].NoticeUntil <= now
+                   : !g_Text[client].Message[0] || g_Text[client].MainUntil <= now)
+            continue;
+        if (style == -1) style = effect;
+        FormatAbilityText(client, notice ? g_Text[client].Notice : g_Text[client].Message, line, sizeof(line));
+        if (combined[0]) StrCat(combined, sizeof(combined), "\n");
+        StrCat(combined, sizeof(combined), line);
+    }
+    if (style != -1)
+    {
+        g_ContextEffect = style;
+        float y = g_Text[client].Y;
+        if (notice) y = y < 0.0 ? 0.56 : Min(y + 0.065, 0.95);
+        SetHudTextParams(g_Text[client].X, y, 0.35,
+            g_Text[client].Color[0], g_Text[client].Color[1], g_Text[client].Color[2], g_Text[client].Color[3],
+            0, 0.0, 0.0, 0.0);
+        ShowSyncHudText(client, notice ? g_NoticeHud : g_MessageHud, "%s", combined);
+    }
+    else ClearSyncHud(client, notice ? g_NoticeHud : g_MessageHud);
+    g_ContextEffect = previous;
 }
 
 void UpdateAbilityText(int client)
 {
-    float now = GetGameTime();
-    if (g_Text[client].Message[0] && g_Text[client].MainUntil > now)
-        DrawAbilityText(client, false);
-    else if (g_Text[client].MainUntil > 0.0)
-        ClearAbilityHud(client, false);
-
-    if (g_Text[client].Notice[0] && g_Text[client].NoticeUntil > now)
-        DrawAbilityText(client, true);
-    else if (g_Text[client].NoticeUntil > 0.0)
-    {
-        ClearSyncHud(client, g_NoticeHud);
-        g_Text[client].NoticeUntil = 0.0;
-        g_Text[client].Notice[0] = '\0';
-    }
-    if (!g_Text[client].Message[0] && !g_Text[client].Notice[0] && !g_hRollers.GetInRoll(client))
-        g_Text[client].Owner = 0;
+    DrawAbilityText(client, false);
+    DrawAbilityText(client, true);
 }
 
 public Action Timer_AbilityText(Handle timer)
@@ -3090,25 +5108,29 @@ public Action Timer_AbilityText(Handle timer)
     if (g_Ready)
     {
         for (int client = 1; client <= MaxClients; client++)
-            if (IsClientInGame(client) && (g_Text[client].MainUntil > 0.0 || g_Text[client].NoticeUntil > 0.0))
-                UpdateAbilityText(client);
+        {
+            if (!IsClientInGame(client)) continue;
+            DrawAbilityText(client, false);
+            DrawAbilityText(client, true);
+        }
     }
     return Plugin_Continue;
 }
 
 void ClearAbilityHud(int client, bool clearNotice = true)
 {
-    if (IsClientInGame(client) && g_MessageHud != null && g_Text[client].MainUntil > 0.0)
-        ClearSyncHud(client, g_MessageHud);
     g_Text[client].MainUntil = 0.0;
     g_Text[client].Message[0] = '\0';
     if (clearNotice)
     {
-        if (IsClientInGame(client) && g_NoticeHud != null && g_Text[client].NoticeUntil > 0.0)
-            ClearSyncHud(client, g_NoticeHud);
         g_Text[client].NoticeUntil = 0.0;
         g_Text[client].Notice[0] = '\0';
         g_Text[client].Owner = 0;
+    }
+    if (IsClientInGame(client) && g_MessageHud != null)
+    {
+        DrawAbilityText(client, false);
+        if (clearNotice) DrawAbilityText(client, true);
     }
 }
 
@@ -3120,9 +5142,9 @@ void NotifyAbility(int client, AbilityNotice notice, int count = 0, int maximum 
     g_Text[client].Maximum = maximum;
     g_Text[client].Damage = damage;
     // Omitted and explicitly empty event messages are both silent.
-    if (!g_NoticeOverride[client][notice][0])
+    if (g_NoticeStore[g_ContextEffect][client] == null
+        || !g_NoticeStore[g_ContextEffect][client].GetString(g_NoticeKeys[notice], g_Text[client].Notice, sizeof(g_Text[].Notice)))
         return;
-    strcopy(g_Text[client].Notice, sizeof(g_Text[].Notice), g_NoticeOverride[client][notice]);
     g_Text[client].NoticeUntil = GetGameTime() + g_Text[client].Lifetime;
     DrawAbilityText(client, true);
 }
@@ -3156,14 +5178,18 @@ int GetTargetMaxHealth(int client)
         : GetEntProp(client, Prop_Data, "m_iMaxHealth");
 }
 
-public Action Timer_EndEffect(Handle timer, any userid)
+public Action Timer_EndEffect(Handle timer, DataPack data)
 {
-    int client = GetClientOfUserId(userid);
+    data.Reset();
+    int client = GetClientOfUserId(data.ReadCell());
+    int previous = g_ContextEffect;
+    g_ContextEffect = data.ReadCell();
     if (client && g_EndTimer[client] == timer)
     {
         g_EndTimer[client] = null;
         RemovePerk(client, RTDRemove_WearOff);
     }
+    g_ContextEffect = previous;
     return Plugin_Stop;
 }
 
@@ -3178,6 +5204,7 @@ Perk RemovePerk(int client, RTDRemoveReason reason = RTDRemove_WearOff)
     if (perk == null || g_Removing[client])
         return perk;
     g_Removing[client] = true;
+    g_RemovalReasonStore[g_ContextEffect][client] = reason;
     g_CastSerial[client]++;
     delete g_EndTimer[client];
     // Clear the countdown before the original removal callback. Natural expiry
@@ -3196,10 +5223,9 @@ Perk RemovePerk(int client, RTDRemoveReason reason = RTDRemove_WearOff)
                 Cache[client].Float[3] = GetEngineTime() + 60.0;
         }
         perk.CallInternal(client, false, reason);
-        RestorePlayerState(client);
     }
+    ReleaseEffectState(g_ContextEffect, client);
     perk.DecrementActiveCount();
-    delete g_AttributeBackup[client];
     Cache[client].Cleanup();
     g_hRollers.SetInRoll(client, false);
     g_hRollers.SetPerk(client, null);
@@ -3214,73 +5240,14 @@ void StopAllEffects(RTDRemoveReason reason)
     g_RoundEnding = true;
     g_RoundSerial++;
     for (int client = 1; client <= MaxClients; client++)
-    {
-        RemovePerk(client, reason);
-        ClearAbilityHud(client);
-        g_hRollers.Reset(client);
-    }
+        RemoveClientEffects(client, reason);
     // Invalidate cache DataPacks before killing raw effect timers. Their native
     // TIMER_DATA_HNDL_CLOSE flag still owns and closes the original timer data.
     CancelEffectTimers();
     g_EffectEntities.Clear();
     if (g_hHoming != null)
         g_hHoming.Clear();
-}
-
-void SavePlayerState(int client)
-{
-    GetClientAbsOrigin(client, g_StartOrigin[client]);
-    g_Gravity[client] = GetEntityGravity(client);
-    g_MoveType[client] = GetEntityMoveType(client);
-    g_ModelScale[client] = GetEntPropFloat(client, Prop_Send, "m_flModelScale");
-    g_HeadScale[client] = GetEntPropFloat(client, Prop_Send, "m_flHeadScale");
-    g_RenderMode[client] = GetEntityRenderMode(client);
-    GetEntityRenderColor(client, g_RenderColor[client][0], g_RenderColor[client][1], g_RenderColor[client][2], g_RenderColor[client][3]);
-
-    delete g_AttributeBackup[client];
-    g_AttributeBackup[client] = new ArrayList(3);
-    int attribs[] = {476, 2048, 394, 241, 26, 264, 326, 819, 275, 535, 11, 329, 178, 238, 359, 400, 68, 107};
-    for (int slot = -1; slot < 5; slot++)
-    {
-        int entity = slot == -1 ? client : GetPlayerWeaponSlot(client, slot);
-        if (entity < 1 || !IsValidEntity(entity))
-            continue;
-        for (int i = 0; i < sizeof(attribs); i++)
-        {
-            Address address = TF2Attrib_GetByDefIndex(entity, attribs[i]);
-            if (address == Address_Null)
-                continue;
-            int entry[3];
-            entry[0] = EntIndexToEntRef(entity);
-            entry[1] = attribs[i];
-            entry[2] = view_as<int>(TF2Attrib_GetValue(address));
-            g_AttributeBackup[client].PushArray(entry);
-        }
-    }
-}
-
-void RestorePlayerState(int client)
-{
-    SetEntityGravity(client, g_Gravity[client]);
-    SetEntityMoveType(client, g_MoveType[client]);
-    SetEntPropFloat(client, Prop_Send, "m_flModelScale", g_ModelScale[client]);
-    SetEntPropFloat(client, Prop_Send, "m_flHeadScale", g_HeadScale[client]);
-    SetEntityRenderMode(client, g_RenderMode[client]);
-    SetEntityRenderColor(client, g_RenderColor[client][0], g_RenderColor[client][1], g_RenderColor[client][2], g_RenderColor[client][3]);
-    if (g_AttributeBackup[client] != null)
-    {
-        for (int i = 0; i < g_AttributeBackup[client].Length; i++)
-        {
-            int entry[3];
-            g_AttributeBackup[client].GetArray(i, entry);
-            int entity = EntRefToEntIndex(entry[0]);
-            if (entity > 0 && IsValidEntity(entity))
-                TF2Attrib_SetByDefIndex(entity, entry[1], view_as<float>(entry[2]));
-        }
-        delete g_AttributeBackup[client];
-    }
-    if (IsPlayerAlive(client))
-        TriggerSpeedRecalc(client);
+    // Pending apply callbacks retain their original layers until they unwind.
 }
 
 public void Event_Death(Event event, const char[] name, bool dontBroadcast)
@@ -3290,9 +5257,8 @@ public void Event_Death(Event event, const char[] name, bool dontBroadcast)
     int client = GetClientOfUserId(event.GetInt("userid"));
     if (!client)
         return;
-    Events.PlayerDied(client);
-    RemovePerk(client, RTDRemove_Death);
-    ClearAbilityHud(client);
+    DispatchPlayerDied(client);
+    RemoveClientEffects(client, RTDRemove_Death);
 }
 
 public void Event_ClassChange(Event event, const char[] name, bool dontBroadcast)
@@ -3300,8 +5266,7 @@ public void Event_ClassChange(Event event, const char[] name, bool dontBroadcast
     int client = GetClientOfUserId(event.GetInt("userid"));
     if (client && view_as<int>(TF2_GetPlayerClass(client)) != event.GetInt("class"))
     {
-        RemovePerk(client, RTDRemove_ClassChange);
-        ClearAbilityHud(client);
+        RemoveClientEffects(client, RTDRemove_ClassChange);
     }
 }
 
@@ -3316,7 +5281,7 @@ public void Event_Resupply(Event event, const char[] name, bool dontBroadcast)
 {
     int client = GetClientOfUserId(event.GetInt("userid"));
     if (client)
-        Events.Resupply(client);
+        DispatchResupply(client);
 }
 
 public void Event_PlayerHurt(Event event, const char[] name, bool dontBroadcast)
@@ -3324,7 +5289,7 @@ public void Event_PlayerHurt(Event event, const char[] name, bool dontBroadcast)
     int victim = GetClientOfUserId(event.GetInt("userid"));
     int attacker = GetClientOfUserId(event.GetInt("attacker"));
     if (victim && attacker)
-        Events.PlayerAttacked(attacker, victim, event.GetInt("damageamount"), event.GetInt("health"));
+        DispatchPlayerAttacked(attacker, victim, event.GetInt("damageamount"), event.GetInt("health"));
 }
 
 public void Event_UberchargeDeployed(Event event, const char[] name, bool dontBroadcast)
@@ -3332,13 +5297,13 @@ public void Event_UberchargeDeployed(Event event, const char[] name, bool dontBr
     int client = GetClientOfUserId(event.GetInt("userid"));
     int target = GetClientOfUserId(event.GetInt("targetid"));
     if (client)
-        Events.UberchargeDeployed(client, target);
+        DispatchUberchargeDeployed(client, target);
 }
 
 public Action Listener_Voice(int client, const char[] command, int argc)
 {
     if (IsValidClient(client))
-        Events.Voice(client);
+        DispatchVoice(client);
     return Plugin_Continue;
 }
 
@@ -3346,18 +5311,18 @@ public Action Listener_Sound(int clients[MAXPLAYERS], int &numClients, char samp
 {
     if (!IsValidClient(entity))
         return Plugin_Continue;
-    return Stocks_Sound(entity, sample) && Events.Sound(entity, sample) ? Plugin_Continue : Plugin_Stop;
+    return Stocks_Sound(entity, sample) && DispatchSound(entity, sample) ? Plugin_Continue : Plugin_Stop;
 }
 
 public void OnEntityCreated(int entity, const char[] classname)
 {
-    if (g_Ready && Events.ClassnameHasSubscribers(classname))
+    if (g_Ready && DispatchClassnameHasSubscribers(classname))
         SDKHook(entity, SDKHook_SpawnPost, Ability_EntitySpawned);
 }
 
 public void Ability_EntitySpawned(int entity)
 {
-    Events.EntitySpawned(entity);
+    DispatchEntitySpawned(entity);
 }
 
 public void OnGameFrame()
@@ -3369,25 +5334,25 @@ public void OnGameFrame()
 public void TF2_OnConditionAdded(int client, TFCond condition)
 {
     if (g_Ready)
-        Events.ConditionAdded(client, condition);
+        DispatchConditionAdded(client, condition);
 }
 
 public void TF2_OnConditionRemoved(int client, TFCond condition)
 {
     if (g_Ready)
-        Events.ConditionRemoved(client, condition);
+        DispatchConditionRemoved(client, condition);
 }
 
 public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float velocity[3], float angles[3], int &weapon)
 {
-    if (g_Ready && IsValidClient(client) && Events.PlayerRunCmd(client, buttons, velocity, angles))
+    if (g_Ready && IsValidClient(client) && DispatchPlayerRunCmd(client, buttons, velocity, angles))
         return Plugin_Changed;
     return Plugin_Continue;
 }
 
 public Action TF2_CalcIsAttackCritical(int client, int weapon, char[] weaponName, bool &result)
 {
-    if (!g_Ready || !IsValidClient(client) || !Events.AttackCritCheck(client, weapon))
+    if (!g_Ready || !IsValidClient(client) || !DispatchAttackCritCheck(client, weapon))
         return Plugin_Continue;
     result = true;
     return Plugin_Changed;
@@ -3842,3 +5807,627 @@ void RegisterEffects()
     perk.SetPref("health", "2");
 }
 // END EMBEDDED EFFECT DEFAULTS
+// Independent ownership is by (effect type, target). Recasting the same type
+// follows replace; applying a different type never invalidates this slot.
+Perk RemoveSpecificPerk(int effect, int client, RTDRemoveReason reason = RTDRemove_WearOff)
+{
+    int previous = g_ContextEffect;
+    g_ContextEffect = effect;
+    Perk removed = RemovePerk(client, reason);
+    g_ContextEffect = previous;
+    return removed;
+}
+
+void RemoveClientEffects(int client, RTDRemoveReason reason)
+{
+    int previous = g_ContextEffect;
+    for (int effect = RTD_EFFECT_COUNT - 1; effect >= 0; effect--)
+    {
+        g_ContextEffect = effect;
+        RemovePerk(client, reason);
+        ClearAbilityHud(client);
+        if (g_Applying[client] || g_Removing[client])
+            continue;
+        Cache[client].Cleanup();
+        ReleaseEffectState(effect, client);
+        g_CastSerial[client]++;
+        g_hRollers.Reset(client);
+        delete g_NoticeStore[effect][client];
+    }
+    if (reason != RTDRemove_WearOff)
+    {
+        bool activeBonus = Shared[client]._BatSpeedBuffUntil > GetGameTime();
+        Shared[client]._BatSpeedBuffUntil = 0.0;
+        if (activeBonus && IsClientInGame(client)) Shared[client].UpdateSpeedBoost(client);
+    }
+    g_ContextEffect = previous;
+}
+
+void NotifySpecificAbility(int effect, int client, AbilityNotice notice, int count = 0, int maximum = 0, int damage = 0)
+{
+    int previous = g_ContextEffect;
+    g_ContextEffect = effect;
+    NotifyAbility(client, notice, count, maximum, damage);
+    g_ContextEffect = previous;
+}
+
+void FixSpecificStuck(int effect, int client)
+{
+    int previous = g_ContextEffect;
+    g_ContextEffect = effect;
+    FixPotentialStuck(client);
+    g_ContextEffect = previous;
+}
+
+// A property has one original value and one layer for each owning effect.
+// Removing a lower layer must not restore an expired value later. Attributes
+// are keyed by entity reference so a new weapon cannot inherit an old layer.
+
+
+int StateOwner(int entity)
+{
+    if (entity >= 1 && entity <= MaxClients)
+        return entity;
+    if (entity > MaxClients && IsValidEntity(entity) && HasEntProp(entity, Prop_Send, "m_hOwnerEntity"))
+    {
+        int owner = GetEntPropEnt(entity, Prop_Send, "m_hOwnerEntity");
+        if (owner >= 1 && owner <= MaxClients)
+            return owner;
+    }
+    return 0;
+}
+
+bool SameState(const int a[SL_Size], const int b[SL_Size])
+{
+    return a[SL_Entity] == b[SL_Entity] && a[SL_Kind] == b[SL_Kind] && a[SL_Key] == b[SL_Key];
+}
+
+void ReadBaseState(int entity, StateKind kind, int key, int &value, bool &present)
+{
+    present = true;
+    switch (kind)
+    {
+        case State_Attribute:
+        {
+            Address address = TF2Attrib_GetByDefIndex(entity, key);
+            present = address != Address_Null;
+            value = present ? view_as<int>(TF2Attrib_GetValue(address)) : 0;
+        }
+        case State_Gravity: value = view_as<int>(GetEntityGravity(entity));
+        case State_Move: value = view_as<int>(GetEntityMoveType(entity));
+        case State_Model: value = view_as<int>(GetEntPropFloat(entity, Prop_Send, "m_flModelScale"));
+        case State_Head: value = view_as<int>(GetEntPropFloat(entity, Prop_Send, "m_flHeadScale"));
+        case State_Step: value = view_as<int>(GetEntPropFloat(entity, Prop_Send, "m_flStepSize"));
+        case State_Overlay: value = view_as<int>(ClientOverlay_None);
+    }
+}
+
+void ApplyResolvedState(const int target[SL_Size])
+{
+    int entity = EntRefToEntIndex(target[SL_Entity]);
+    if (entity < 1 || !IsValidEntity(entity))
+        return;
+    int chosen[SL_Size], row[SL_Size];
+    bool found;
+    int priority = -1;
+    for (int i = 0; i < g_StateLayers.Length; i++)
+    {
+        g_StateLayers.GetArray(i, row);
+        if (!SameState(row, target)) continue;
+        int order = row[SL_Order];
+        // An active immobilization must continue to block movement while a
+        // flight layer is added or removed underneath it.
+        if (row[SL_Kind] == view_as<int>(State_Move) && row[SL_Effect] >= 0 && row[SL_Value] == view_as<int>(MOVETYPE_NONE))
+            order = 2147483647;
+        if (!found || order >= priority)
+        {
+            chosen = row;
+            priority = order;
+            found = true;
+        }
+    }
+    if (!found) return;
+    switch (view_as<StateKind>(chosen[SL_Kind]))
+    {
+        case State_Attribute:
+        {
+            if (chosen[SL_Present]) TF2Attrib_SetByDefIndex(entity, chosen[SL_Key], view_as<float>(chosen[SL_Value]));
+            else TF2Attrib_RemoveByDefIndex(entity, chosen[SL_Key]);
+            if (chosen[SL_Key] == 107 && IsValidClient(entity) && IsPlayerAlive(entity)) TriggerSpeedRecalc(entity);
+        }
+        case State_Gravity: SetEntityGravity(entity, view_as<float>(chosen[SL_Value]));
+        case State_Move: SetEntityMoveType(entity, view_as<MoveType>(chosen[SL_Value]));
+        case State_Model: SetEntPropFloat(entity, Prop_Send, "m_flModelScale", view_as<float>(chosen[SL_Value]));
+        case State_Head: SetEntPropFloat(entity, Prop_Send, "m_flHeadScale", view_as<float>(chosen[SL_Value]));
+        case State_Step: SetEntPropFloat(entity, Prop_Send, "m_flStepSize", view_as<float>(chosen[SL_Value]));
+        case State_Overlay: SetOverlay(entity, view_as<ClientOverlay>(chosen[SL_Value]));
+    }
+}
+
+void ForgetUnusedBase(const int target[SL_Size])
+{
+    int row[SL_Size], base = -1;
+    for (int i = 0; i < g_StateLayers.Length; i++)
+    {
+        g_StateLayers.GetArray(i, row);
+        if (!SameState(row, target)) continue;
+        if (row[SL_Effect] >= 0) return;
+        base = i;
+    }
+    if (base >= 0) g_StateLayers.Erase(base);
+}
+
+void WriteEffectState(int effect, int entity, StateKind kind, int key, int value, bool present = true)
+{
+    int client = StateOwner(entity);
+    if (!client || g_RemovingStore[effect][client]) return;
+    int row[SL_Size], target[SL_Size], base = -1, own = -1;
+    target[SL_Entity] = EntIndexToEntRef(entity);
+    target[SL_Kind] = view_as<int>(kind);
+    target[SL_Key] = key;
+    target[SL_Effect] = effect;
+    target[SL_Client] = client;
+    for (int i = 0; i < g_StateLayers.Length; i++)
+    {
+        g_StateLayers.GetArray(i, row);
+        if (!SameState(row, target)) continue;
+        if (row[SL_Effect] == -1) base = i;
+        if (row[SL_Effect] == effect) own = i;
+    }
+    if (!present)
+    {
+        if (own < 0) return;
+        g_StateLayers.Erase(own);
+        ApplyResolvedState(target);
+        ForgetUnusedBase(target);
+        return;
+    }
+    if (base < 0)
+    {
+        row = target;
+        row[SL_Effect] = -1;
+        bool exists;
+        ReadBaseState(entity, kind, key, row[SL_Value], exists);
+        row[SL_Present] = exists;
+        g_StateLayers.PushArray(row);
+    }
+    target[SL_Value] = value;
+    target[SL_Present] = true;
+    target[SL_Order] = ++g_StateOrder;
+    if (own < 0) g_StateLayers.PushArray(target);
+    else g_StateLayers.SetArray(own, target);
+    ApplyResolvedState(target);
+}
+
+void ReleaseEffectState(int effect, int client)
+{
+    int row[SL_Size];
+    for (int i = g_StateLayers.Length - 1; i >= 0; i--)
+    {
+        g_StateLayers.GetArray(i, row);
+        if (row[SL_Effect] != effect || row[SL_Client] != client) continue;
+        g_StateLayers.Erase(i);
+        ApplyResolvedState(row);
+        ForgetUnusedBase(row);
+        // ForgetUnusedBase may erase a row below this one.
+        i = g_StateLayers.Length;
+    }
+}
+
+void EffectSetFloat(int effect, int entity, PropType type, const char[] prop, float value, int element = 0)
+{
+    if (IsValidClient(entity) && type == Prop_Send && element == 0)
+    {
+        if (StrEqual(prop, "m_flModelScale")) { WriteEffectState(effect, entity, State_Model, 0, view_as<int>(value)); return; }
+        if (StrEqual(prop, "m_flHeadScale")) { WriteEffectState(effect, entity, State_Head, 0, view_as<int>(value)); return; }
+        if (StrEqual(prop, "m_flStepSize")) { WriteEffectState(effect, entity, State_Step, 0, view_as<int>(value)); return; }
+    }
+    SetEntPropFloat(entity, type, prop, value, element);
+}
+
+void EffectMove(int effect, int entity, MoveType type)
+{
+    if (IsValidClient(entity)) WriteEffectState(effect, entity, State_Move, 0, view_as<int>(type), type != MOVETYPE_WALK);
+    else SetEntityMoveType(entity, type);
+}
+
+void EffectSpeed(int effect, int client, float multiplier)
+{
+    WriteEffectState(effect, client, State_Attribute, 107, view_as<int>(multiplier), multiplier != 1.0);
+}
+
+void EffectCapture(int effect, int client, bool prevent)
+{
+    WriteEffectState(effect, client, State_Attribute, 400, view_as<int>(1.0), prevent);
+    WriteEffectState(effect, client, State_Attribute, 68, view_as<int>(-GetCaptureValue(client)), prevent);
+    if (prevent) FakeClientCommandEx(client, "dropitem");
+}
+
+void DispatchPlayerDisconnected(int client)
+{
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnPlayerDisconnected.Length) continue;
+        g_ContextEffect = effect;
+        Events.PlayerDisconnected(client);
+    }
+    g_ContextEffect = previous;
+}
+
+void DispatchPlayerDied(int client)
+{
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnPlayerDied.Length) continue;
+        g_ContextEffect = effect;
+        Events.PlayerDied(client);
+    }
+    g_ContextEffect = previous;
+}
+
+void DispatchResupply(int client)
+{
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnResupply.Length) continue;
+        g_ContextEffect = effect;
+        Events.Resupply(client);
+    }
+    g_ContextEffect = previous;
+}
+
+void DispatchPlayerAttacked(int client, int victim, int damage, int health)
+{
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnPlayerAttacked.Length) continue;
+        g_ContextEffect = effect;
+        Events.PlayerAttacked(client, victim, damage, health);
+    }
+    g_ContextEffect = previous;
+}
+
+void DispatchUberchargeDeployed(int client, int target)
+{
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnUberchargeDeployed.Length) continue;
+        g_ContextEffect = effect;
+        Events.UberchargeDeployed(client, target);
+    }
+    g_ContextEffect = previous;
+}
+
+void DispatchVoice(int client)
+{
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnVoice.Length) continue;
+        g_ContextEffect = effect;
+        Events.Voice(client);
+    }
+    g_ContextEffect = previous;
+}
+
+bool DispatchSound(int client, const char[] sample)
+{
+    int previous = g_ContextEffect;
+    bool result = true;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnSound.Length) continue;
+        g_ContextEffect = effect;
+        result &= Events.Sound(client, sample);
+    }
+    g_ContextEffect = previous;
+    return result;
+}
+
+bool DispatchClassnameHasSubscribers(const char[] classname)
+{
+    int previous = g_ContextEffect;
+    bool result = false;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnEntitySpawned.Length) continue;
+        g_ContextEffect = effect;
+        result |= Events.ClassnameHasSubscribers(classname);
+    }
+    g_ContextEffect = previous;
+    return result;
+}
+
+void DispatchEntitySpawned(int entity)
+{
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnEntitySpawned.Length) continue;
+        g_ContextEffect = effect;
+        Events.EntitySpawned(entity);
+    }
+    g_ContextEffect = previous;
+}
+
+void DispatchConditionAdded(int client, TFCond condition)
+{
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnConditionAdded.Length) continue;
+        g_ContextEffect = effect;
+        Events.ConditionAdded(client, condition);
+    }
+    g_ContextEffect = previous;
+}
+
+void DispatchConditionRemoved(int client, TFCond condition)
+{
+    int previous = g_ContextEffect;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnConditionRemoved.Length) continue;
+        g_ContextEffect = effect;
+        Events.ConditionRemoved(client, condition);
+    }
+    g_ContextEffect = previous;
+}
+
+bool DispatchPlayerRunCmd(int client, int &buttons, float velocity[3], float angles[3])
+{
+    int previous = g_ContextEffect;
+    bool result = false;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnPlayerRunCmd.Length) continue;
+        g_ContextEffect = effect;
+        result |= Events.PlayerRunCmd(client, buttons, velocity, angles);
+    }
+    g_ContextEffect = previous;
+    return result;
+}
+
+bool DispatchAttackCritCheck(int client, int weapon)
+{
+    int previous = g_ContextEffect;
+    bool result = false;
+    for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
+    {
+        if (!g_AllEvents[effect]._OnAttackCritCheck.Length) continue;
+        g_ContextEffect = effect;
+        result |= Events.AttackCritCheck(client, weapon);
+    }
+    g_ContextEffect = previous;
+    return result;
+}
+
+stock void FX1_FixPotentialStuck(int client) { FixSpecificStuck(1, client); }
+
+stock void FX1_SetEntityGravity(int entity, float value) { WriteEffectState(1, entity, State_Gravity, 0, view_as<int>(value)); }
+
+stock void FX1_SetEntityMoveType(int entity, MoveType type) { EffectMove(1, entity, type); }
+
+stock void FX2_SetEntPropFloat(int entity, PropType type, const char[] prop, float value, int element = 0) { EffectSetFloat(2, entity, type, prop, value, element); }
+
+stock Perk FX4_RemovePerk(int client) { return RemoveSpecificPerk(4, client); }
+
+stock void FX4_SetEntPropFloat(int entity, PropType type, const char[] prop, float value, int element = 0) { EffectSetFloat(4, entity, type, prop, value, element); }
+
+stock Handle FX5_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 5); }
+
+stock void FX6_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 6); }
+
+stock Perk FX6_RemovePerk(int client) { return RemoveSpecificPerk(6, client); }
+
+stock void FX7_SetSpeedEx(int client, float multiplier = 1.0) { EffectSpeed(7, client, multiplier); }
+
+stock Handle FX8_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 8); }
+
+stock void FX8_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 8); }
+
+stock Perk FX8_RemovePerk(int client) { return RemoveSpecificPerk(8, client); }
+
+stock void FX8_SetEntityMoveType(int entity, MoveType type) { EffectMove(8, entity, type); }
+
+stock void FX8_ApplyPreventCapture(int client) { EffectCapture(8, client, true); }
+
+stock void FX8_RemovePreventCapture(int client) { EffectCapture(8, client, false); }
+
+stock void FX9_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 9); }
+
+stock void FX13_SetOverlay(int client, ClientOverlay overlay) { WriteEffectState(13, client, State_Overlay, 0, view_as<int>(overlay), overlay != ClientOverlay_None); }
+
+stock void FX14_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 14); }
+
+stock Perk FX14_RemovePerk(int client) { return RemoveSpecificPerk(14, client); }
+
+stock void FX14_SetEntPropFloat(int entity, PropType type, const char[] prop, float value, int element = 0) { EffectSetFloat(14, entity, type, prop, value, element); }
+
+stock void FX17_SetOverlay(int client, ClientOverlay overlay) { WriteEffectState(17, client, State_Overlay, 0, view_as<int>(overlay), overlay != ClientOverlay_None); }
+
+stock Perk FX20_RemovePerk(int client) { return RemoveSpecificPerk(20, client); }
+
+stock Perk FX21_RemovePerk(int client) { return RemoveSpecificPerk(21, client); }
+
+stock bool FX23_TF2Attrib_SetByDefIndex(int entity, int index, float value) { WriteEffectState(23, entity, State_Attribute, index, view_as<int>(value)); return true; }
+
+stock bool FX23_TF2Attrib_RemoveByDefIndex(int entity, int index) { WriteEffectState(23, entity, State_Attribute, index, 0, false); return true; }
+
+stock bool FX24_TF2Attrib_SetByDefIndex(int entity, int index, float value) { WriteEffectState(24, entity, State_Attribute, index, view_as<int>(value)); return true; }
+
+stock bool FX24_TF2Attrib_RemoveByDefIndex(int entity, int index) { WriteEffectState(24, entity, State_Attribute, index, 0, false); return true; }
+
+stock void FX24_SetEntPropFloat(int entity, PropType type, const char[] prop, float value, int element = 0) { EffectSetFloat(24, entity, type, prop, value, element); }
+
+stock void FX25_FixPotentialStuck(int client) { FixSpecificStuck(25, client); }
+
+stock bool FX25_TF2Attrib_SetByDefIndex(int entity, int index, float value) { WriteEffectState(25, entity, State_Attribute, index, view_as<int>(value)); return true; }
+
+stock bool FX25_TF2Attrib_RemoveByDefIndex(int entity, int index) { WriteEffectState(25, entity, State_Attribute, index, 0, false); return true; }
+
+stock void FX25_SetEntPropFloat(int entity, PropType type, const char[] prop, float value, int element = 0) { EffectSetFloat(25, entity, type, prop, value, element); }
+
+stock Handle FX26_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 26); }
+
+stock void FX29_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 29); }
+
+stock Handle FX30_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 30); }
+
+stock Handle FX30_CreateDataTimer(float interval, Timer callback, Handle &pack, int flags = 0) { pack = new DataPack(); return CreateEffectTimer(interval, callback, pack, flags | TIMER_DATA_HNDL_CLOSE, 30); }
+
+stock void FX31_SetEntPropFloat(int entity, PropType type, const char[] prop, float value, int element = 0) { EffectSetFloat(31, entity, type, prop, value, element); }
+
+stock bool FX33_TF2Attrib_SetByDefIndex(int entity, int index, float value) { WriteEffectState(33, entity, State_Attribute, index, view_as<int>(value)); return true; }
+
+stock bool FX33_TF2Attrib_RemoveByDefIndex(int entity, int index) { WriteEffectState(33, entity, State_Attribute, index, 0, false); return true; }
+
+stock void FX36_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 36); }
+
+stock void FX41_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 41); }
+
+stock void FX42_SetEntPropFloat(int entity, PropType type, const char[] prop, float value, int element = 0) { EffectSetFloat(42, entity, type, prop, value, element); }
+
+stock bool FX43_TF2Attrib_SetByDefIndex(int entity, int index, float value) { WriteEffectState(43, entity, State_Attribute, index, view_as<int>(value)); return true; }
+
+stock bool FX43_TF2Attrib_RemoveByDefIndex(int entity, int index) { WriteEffectState(43, entity, State_Attribute, index, 0, false); return true; }
+
+stock void FX44_FixPotentialStuck(int client) { FixSpecificStuck(44, client); }
+
+stock bool FX46_TF2Attrib_SetByDefIndex(int entity, int index, float value) { WriteEffectState(46, entity, State_Attribute, index, view_as<int>(value)); return true; }
+
+stock bool FX46_TF2Attrib_RemoveByDefIndex(int entity, int index) { WriteEffectState(46, entity, State_Attribute, index, 0, false); return true; }
+
+stock Handle FX47_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 47); }
+
+stock void FX47_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 47); }
+
+stock void FX47_SetEntityMoveType(int entity, MoveType type) { EffectMove(47, entity, type); }
+
+stock Handle FX48_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 48); }
+
+stock Handle FX49_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 49); }
+
+stock void FX51_SetSpeed(int client, float base, float multiplier = 1.0) {
+ #pragma unused base
+ EffectSpeed(51, client, multiplier); }
+
+stock void FX51_ResetSpeed(int client) { EffectSpeed(51, client, 1.0); }
+
+stock void FX52_SetSpeed(int client, float base, float multiplier = 1.0) {
+ #pragma unused base
+ EffectSpeed(52, client, multiplier); }
+
+stock void FX52_ResetSpeed(int client) { EffectSpeed(52, client, 1.0); }
+
+stock Handle FX53_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 53); }
+
+stock void FX53_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 53); }
+
+stock Handle FX54_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 54); }
+
+stock Handle FX55_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 55); }
+
+stock void FX55_SetEntityMoveType(int entity, MoveType type) { EffectMove(55, entity, type); }
+
+stock void FX55_SetSpeedEx(int client, float multiplier = 1.0) { EffectSpeed(55, client, multiplier); }
+
+stock Handle FX56_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 56); }
+
+stock Handle FX57_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 57); }
+
+stock void FX58_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 58); }
+
+stock void FX58_SetSpeed(int client, float base, float multiplier = 1.0) {
+ #pragma unused base
+ EffectSpeed(58, client, multiplier);
+ if (multiplier == 1.0)
+ {
+     Shared[client]._SmiteCritUntil = 0.0;
+     Shared[client].UpdateCritBoost(client);
+ }
+}
+
+stock void FX58_ResetSpeed(int client)
+{
+    EffectSpeed(58, client, 1.0);
+    Shared[client]._SmiteCritUntil = 0.0;
+    Shared[client].UpdateCritBoost(client);
+}
+
+stock bool FX59_TF2Attrib_SetByDefIndex(int entity, int index, float value) { WriteEffectState(59, entity, State_Attribute, index, view_as<int>(value)); return true; }
+
+stock bool FX59_TF2Attrib_RemoveByDefIndex(int entity, int index) { WriteEffectState(59, entity, State_Attribute, index, 0, false); return true; }
+
+stock Handle FX60_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 60); }
+
+stock void FX60_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 60); }
+
+stock void FX60_SetEntityMoveType(int entity, MoveType type) { EffectMove(60, entity, type); }
+
+stock Handle FX61_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 61); }
+
+stock void FX61_SDKHook(int entity, SDKHookType type, SDKHookCB callback) { HookEffectEntity(entity, type, callback, 61); }
+
+stock Handle FX64_CreateTimer(float interval, Timer callback, any data = 0, int flags = 0) { return CreateEffectTimer(interval, callback, data, flags, 64); }
+
+stock bool FX65_TF2Attrib_SetByDefIndex(int entity, int index, float value) { WriteEffectState(65, entity, State_Attribute, index, view_as<int>(value)); return true; }
+
+stock bool FX65_TF2Attrib_RemoveByDefIndex(int entity, int index) { WriteEffectState(65, entity, State_Attribute, index, 0, false); return true; }
+
+stock void FX5_AddCondition(int client, TFCond condition)
+{
+    Shared[client].AddCritBoost(client, condition == TFCond_Buffed ? CritBoost_Mini : CritBoost_Full);
+}
+
+stock void FX5_RemoveCondition(int client, TFCond condition)
+{
+    Shared[client].RemoveCritBoost(client, condition == TFCond_Buffed ? CritBoost_Mini : CritBoost_Full);
+}
+
+Perk GetDispatchPerk(int client)
+{
+    return g_Removing[client] ? null : g_hRollers.GetPerk(client);
+}
+
+stock void FX58_AddCondition(int client, TFCond condition, float duration)
+{
+    if (condition == TFCond_CritOnFirstBlood)
+    {
+        Shared[client]._SmiteCritUntil = GetGameTime() + duration;
+        Shared[client].UpdateCritBoost(client);
+    }
+    else TF2_AddCondition(client, condition, duration);
+}
+
+stock void FX25_AddSpeedBoost(int client, TFCond condition)
+{
+    #pragma unused condition
+    Shared[client]._TinySpeedBoost = true;
+    Shared[client].UpdateSpeedBoost(client);
+}
+
+stock void FX25_RemoveSpeedBoost(int client, TFCond condition)
+{
+    #pragma unused condition
+    Shared[client]._TinySpeedBoost = false;
+    Shared[client].UpdateSpeedBoost(client);
+}
+
+stock void FX55_AddCondition(int client, TFCond condition, float duration = TFCondDuration_Infinite)
+{
+    if (condition == TFCond_SpeedBuffAlly)
+    {
+        // Forced lifecycle cleanup must not grant a new post-effect bonus.
+        Shared[client]._BatSpeedBuffUntil = g_RoundEnding || !IsPlayerAlive(client)
+            || (g_RemovingStore[55][client] && g_RemovalReasonStore[55][client] != RTDRemove_WearOff)
+            ? 0.0 : GetGameTime() + duration;
+        Shared[client].UpdateSpeedBoost(client);
+    }
+    else TF2_AddCondition(client, condition, duration);
+}
