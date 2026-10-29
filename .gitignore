@@ -6,10 +6,16 @@
 !/README.md
 !/freakconfig.md
 
-# Allow traversal only to the requested SourcePawn files.
+# Allow traversal to the requested plugin sources.
 !/addons/
 !/addons/sourcemod/
 !/addons/sourcemod/scripting/
 !/addons/sourcemod/scripting/ffs_ammo_drain.sp
 !/addons/sourcemod/scripting/ffs_forsaken_script.sp
 !/addons/sourcemod/scripting/ffs_rtd_ability.sp
+
+# Keep only these compiled plugins.
+!/addons/sourcemod/scripting/compiled/
+!/addons/sourcemod/scripting/compiled/ffs_rtd_ability.smx
+!/addons/sourcemod/scripting/compiled/ffs_forsaken_script.smx
+!/addons/sourcemod/scripting/compiled/ffs_ammo_drain.smx
