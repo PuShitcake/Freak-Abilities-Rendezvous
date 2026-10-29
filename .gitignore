@@ -1,0 +1,15 @@
+# Ignore all files and directories by default.
+*
+
+# Keep this allowlist and the requested documentation.
+!/.gitignore
+!/README.md
+!/freakconfig.md
+
+# Allow traversal only to the requested SourcePawn files.
+!/addons/
+!/addons/sourcemod/
+!/addons/sourcemod/scripting/
+!/addons/sourcemod/scripting/ffs_ammo_drain.sp
+!/addons/sourcemod/scripting/ffs_forsaken_script.sp
+!/addons/sourcemod/scripting/ffs_rtd_ability.sp
