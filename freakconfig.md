@@ -1,7 +1,6 @@
 # Boss Ability Configurations
 
 Configuration examples for Freak Fortress 2 Rewrite. Copy an ability's code block into your boss config.
-`plugin_name` stays at the bottom of every example.
 
 ## Contents
 
@@ -51,7 +50,7 @@ Ability: `rage_ammo_drain`
     "message"               ""               // Optional center text for players whose ammo changed.
                                                // Empty/omitted = silent. Literal \n starts a new line.
 
-	"plugin_name"           "ffs_ammo_drain"
+    "plugin_name"           "ffs_ammo_drain"
 }
 ```
 
@@ -108,11 +107,6 @@ Ability: `rage_corrupted_energy`
 ```
 
 ## RTD Abilities
-
-Different RTD effect types can run together on the same player, each with its own duration.
-`replace` controls repeated casts of the same effect type (including names with `__suffix`); it does not remove other types.
-If effects change the same property, the latest active value wins until it ends. Immobilization takes priority over flight.
-Simultaneous HUD messages are combined into multiple lines. The first visible effect in the list supplies their position and color.
 
 Use the index below to jump to an ability and copy its configuration.
 

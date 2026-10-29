@@ -40,7 +40,7 @@
     "message"               ""               // Optional center text for players whose ammo changed.
                                                // Empty/omitted = silent. Literal \n starts a new line.
 
-	"plugin_name"           "ffs_ammo_drain" 
+    "plugin_name"           "ffs_ammo_drain"
 }
 
  * Examples: mode=percent, amount=50 removes half of the current ammo.
