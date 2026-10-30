@@ -2116,6 +2116,8 @@ END RTD CONFIG EXAMPLES */
 #include <cfgmap>
 #include <ff2r>
 
+#define RTD_PLUGIN_VERSION "1.2.5"
+
 // The original effect callbacks only need this enum from rtd2.inc.
 // Keep its original numeric order without declaring any RTD plugin dependency.
 enum RTDRemoveReason
@@ -2132,9 +2134,9 @@ enum RTDRemoveReason
 public Plugin myinfo =
 {
     name = "FF2 Rewrite: RTD Abilities",
-    author = "Codex, Phil25 (original RTD effects), Xeacring",
+    author = "Codex, Phil25 (original RTD effects), pu_shitcake",
     description = "68 configurable, standalone FF2 Rewrite RTD abilities",
-    version = "1.2.0"
+    version = RTD_PLUGIN_VERSION
 };
 
 // The original implementations share these private engine types and helpers.
@@ -3184,17 +3186,32 @@ methodmap Perk < StringMap
         Call_PushCell(this);
         Call_PushCell(apply);
         Call_PushCell(reason);
-        Call_Finish();
+        int error = Call_Finish();
+        if (error != SP_ERROR_NONE)
+            LogError("RTD callback %s failed for client %d (apply=%d, SourcePawn error %d). See the SourceMod error log for its stack trace.", callback, client, apply, error);
+        if (apply)
+            RuntimeTrace("callback=%s; target=%d; error=%d", callback, client, error);
     }
-    public void InitInternal()
+    public bool InitInternal()
     {
         char callback[64]; this.GetString("m_Init", callback, sizeof(callback));
-        if (!callback[0]) return;
+        if (!callback[0]) return true;
         Function func = GetFunctionByName(INVALID_HANDLE, callback);
-        if (func == INVALID_FUNCTION) ThrowError("Missing RTD initializer %s", callback);
+        if (func == INVALID_FUNCTION)
+        {
+            StartupFailure("Missing RTD initializer: %s", callback);
+            return false;
+        }
         Call_StartFunction(INVALID_HANDLE, func);
         Call_PushCell(this);
-        Call_Finish();
+        int error = Call_Finish();
+        if (error != SP_ERROR_NONE)
+        {
+            char token[32]; this.GetToken(token, sizeof(token));
+            StartupFailure("Initializer %s for '%s' failed (SourcePawn error %d). See the SourceMod error log for its stack trace.", callback, token, error);
+            return false;
+        }
+        return true;
     }
     public bool IsAptForSetupOf(int client)
     {
@@ -3256,7 +3273,16 @@ PerkContainer g_hPerkContainer;
 
 methodmap Rollers < ArrayList
 {
-    public Rollers() { return view_as<Rollers>(new ArrayList(5, MAXPLAYERS + 1)); }
+    public Rollers()
+    {
+        ArrayList rows = new ArrayList(5, MAXPLAYERS + 1);
+        int empty[5] = {0, 0, 0, 0, 0};
+        // ArrayList startsize allocates uninitialized memory. Round cleanup
+        // visits empty client slots too, so their perk handles must be zero.
+        for (int client = 0; client <= MAXPLAYERS; client++)
+            rows.SetArray(client, empty, sizeof(empty));
+        return view_as<Rollers>(rows);
+    }
     public bool GetInRoll(int client) { return view_as<bool>(this.Get(client, 0)); }
     public void SetInRoll(int client, bool value) { this.Set(client, value, 0); }
     public Perk GetPerk(int client) { return view_as<Perk>(this.Get(client, 1)); }
@@ -4388,6 +4414,13 @@ ClientFlags g_eInGodmode;
 
 bool g_Ready;
 bool g_RoundEnding;
+char g_LastRoundEvent[64] = "none";
+int g_StopAllDepth;
+int g_LastStopTick = -1;
+bool g_RuntimeInitialized;
+int g_InitializedEffects;
+char g_StartupLogPath[PLATFORM_MAX_PATH];
+ConVar g_RageDebug;
 int g_RoundSerial;
 int g_CastSerialStore[RTD_EFFECT_COUNT][MAXPLAYERS + 1];
 ArrayList g_EffectTimers;
@@ -4651,8 +4684,51 @@ enum StateLayer { SL_Entity, SL_Kind, SL_Key, SL_Effect, SL_Client, SL_Value, SL
 ArrayList g_StateLayers;
 int g_StateOrder;
 
+// These diagnostics go to the server console and a dedicated file, never chat.
+// A binary rejected before OnPluginStart cannot run this logger; SourceMod
+// reports those missing-native, extension, or invalid-binary errors itself.
+void StartupLog(const char[] format, any ...)
+{
+    char message[1024];
+    VFormat(message, sizeof(message), format, 2);
+    PrintToServer("[ffs_rtd_ability] %s", message);
+    LogToFileEx(g_StartupLogPath, "[ffs_rtd_ability] %s", message);
+}
+
+// Runtime diagnostics go only to the server console and log. No player text.
+// Set ffs_rtd_ability_debug 0 after capturing a failed rage to disable them.
+void RuntimeTrace(const char[] format, any ...)
+{
+    if (g_RageDebug == null || !g_RageDebug.BoolValue)
+        return;
+    char message[1024];
+    VFormat(message, sizeof(message), format, 2);
+    // Temporarily muted. Uncomment this line to restore runtime debug output.
+    // StartupLog("[rage-debug] %s", message);
+}
+
+void StartupFailure(const char[] format, any ...)
+{
+    char message[1024];
+    VFormat(message, sizeof(message), format, 2);
+    StartupLog("ERROR: %s", message);
+    LogError("[ffs_rtd_ability] %s", message);
+    SetFailState("%s", message);
+}
+
+bool HookStartupEvent(const char[] name, EventHook callback)
+{
+    if (HookEventEx(name, callback))
+        return true;
+    StartupFailure("Cannot hook required TF2 event '%s'. Check the game and SourceMod versions.", name);
+    return false;
+}
+
 public void OnPluginStart()
 {
+    BuildPath(Path_SM, g_StartupLogPath, sizeof(g_StartupLogPath), "logs/ffs_rtd_ability.log");
+    g_RageDebug = CreateConVar("ffs_rtd_ability_debug", "1", "Log FF2R RTD ability dispatch, rejection reasons and callback results to the server console and log.", FCVAR_NONE, true, 0.0, true, 1.0);
+
     g_EffectTimers = new ArrayList(ET_Size);
     g_EffectEntities = new StringMap();
     for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
@@ -4664,17 +4740,26 @@ public void OnPluginStart()
     CreateTimer(0.25, Timer_AbilityText, _, TIMER_REPEAT);
 
     RegisterEffects();
+    if (g_hPerkTokenMapper.Length != RTD_EFFECT_COUNT)
+    {
+        StartupFailure("Registered %d abilities; expected %d.", g_hPerkTokenMapper.Length, RTD_EFFECT_COUNT);
+        return;
+    }
 
-    HookEvent("player_death", Event_Death);
-    HookEvent("player_changeclass", Event_ClassChange);
-    HookEvent("post_inventory_application", Event_Resupply);
-    HookEvent("player_hurt", Event_PlayerHurt);
-    HookEvent("player_chargedeployed", Event_UberchargeDeployed);
-    HookEvent("teamplay_round_start", Event_Reset);
-    HookEvent("teamplay_round_win", Event_Reset);
-    HookEvent("arena_win_panel", Event_Reset);
+    if (!HookStartupEvent("player_death", Event_Death)
+        || !HookStartupEvent("player_changeclass", Event_ClassChange)
+        || !HookStartupEvent("post_inventory_application", Event_Resupply)
+        || !HookStartupEvent("player_hurt", Event_PlayerHurt)
+        || !HookStartupEvent("player_chargedeployed", Event_UberchargeDeployed)
+        || !HookStartupEvent("teamplay_round_start", Event_Reset)
+        || !HookStartupEvent("arena_round_start", Event_Reset)
+        || !HookStartupEvent("teamplay_setup_finished", Event_Reset)
+        || !HookStartupEvent("teamplay_round_win", Event_Reset)
+        || !HookStartupEvent("arena_win_panel", Event_Reset))
+        return;
     AddCommandListener(Listener_Voice, "voicemenu");
     AddNormalSoundHook(Listener_Sound);
+    RegServerCmd("sm_ffs_rtd_status", Command_RtdStatus, "Show RTD ability initialization status in the server console and log.");
 
     for (int client = 1; client <= MaxClients; client++)
     {
@@ -4686,11 +4771,85 @@ public void OnPluginStart()
         if (IsClientInGame(client))
             OnClientPutInServer(client);
     }
+    g_RuntimeInitialized = true;
+}
+
+public void OnAllPluginsLoaded()
+{
+    static const char requiredNatives[][] =
+    {
+        "SDKHook", "TeleportEntity", "FF2R_GetBossData",
+        "TF2Attrib_SetByDefIndex", "TF2Attrib_GetByDefIndex",
+        "TF2Attrib_RemoveByDefIndex", "TF2Attrib_GetValue"
+    };
+    for (int i = 0; i < sizeof(requiredNatives); i++)
+    {
+        if (GetFeatureStatus(FeatureType_Native, requiredNatives[i]) != FeatureStatus_Available)
+        {
+            StartupFailure("Required native '%s' is unavailable. Check SDKHooks, SDKTools, FF2 Rewrite and TF2Attributes.", requiredNatives[i]);
+            return;
+        }
+    }
+}
+
+public Action Command_RtdStatus(int args)
+{
+    char filename[PLATFORM_MAX_PATH], map[PLATFORM_MAX_PATH];
+    GetPluginFilename(INVALID_HANDLE, filename, sizeof(filename));
+    GetCurrentMap(map, sizeof(map));
+    int engineState = -1;
+    if (g_Ready)
+        engineState = view_as<int>(GameRules_GetRoundState());
+    StartupLog("STATUS v%s; file=%s; map=%s; loaded=%d; ready=%d; initialized=%d/%d; round_ending=%d; engine_state=%d; last_round_event=%s",
+        RTD_PLUGIN_VERSION, filename, map, g_RuntimeInitialized, g_Ready,
+        g_InitializedEffects, RTD_EFFECT_COUNT, g_RoundEnding, engineState, g_LastRoundEvent);
+    LogBossAbilityStatus();
+    return Plugin_Handled;
+}
+
+// Explicit status command: inspect what FF2R actually loaded, rather than the
+// config file on disk. Missing/nested sections never reach the ability forward.
+void LogBossAbilityStatus()
+{
+    int bosses;
+    for (int client = 1; client <= MaxClients; client++)
+    {
+        if (!IsClientInGame(client))
+            continue;
+        BossData boss = FF2R_GetBossData(client);
+        if (!boss)
+            continue;
+        bosses++;
+        int count;
+        StringMapSnapshot keys = boss.Snapshot();
+        for (int i = 0; i < keys.Length; i++)
+        {
+            char ability[128];
+            keys.GetKey(i, ability, sizeof(ability));
+            if (StrContains(ability, "rage_rtd_", false) != 0)
+                continue;
+            AbilityData cfg = boss.GetAbility(ability);
+            if (!cfg)
+                continue;
+            char plugin[64];
+            cfg.GetString("plugin_name", plugin, sizeof(plugin), "<omitted>");
+            StartupLog("CONFIG boss=%d; ability=%s; slot=%d; plugin_name=%s; matches_plugin=%d",
+                client, ability, cfg.GetInt("slot", cfg.GetInt("arg0", 0)), plugin, cfg.IsMyPlugin());
+            count++;
+        }
+        delete keys;
+        StartupLog("CONFIG boss=%d; RTD abilities=%d", client, count);
+    }
+    if (!bosses)
+        StartupLog("CONFIG no active FF2R bosses; run sm_ffs_rtd_status again while playing the affected boss.");
 }
 
 public void OnMapStart()
 {
+    g_Ready = false;
+    g_InitializedEffects = 0;
     g_RoundEnding = false;
+    strcopy(g_LastRoundEvent, sizeof(g_LastRoundEvent), "map_start");
     Storage_Precache();
     // Stocks_OnMapStart installs its own hook; install it only once here instead.
     PrecacheModel(LASERBEAM);
@@ -4712,7 +4871,7 @@ public void OnMapStart()
         perk.GetInternalCall(callback, sizeof(callback));
         if (GetFunctionByName(INVALID_HANDLE, callback) == INVALID_FUNCTION)
         {
-            SetFailState("Missing RTD effect callback: %s (%s)", callback, token);
+            StartupFailure("Missing RTD effect callback: %s (%s)", callback, token);
             return;
         }
         if (StrEqual(token, "heavyrockets"))
@@ -4721,25 +4880,28 @@ public void OnMapStart()
             // snapshot so two bosses can configure different values concurrently.
             Events.OnEntitySpawned(perk, Ability_HeavyRocketSpawned, HeavyRockets_ClassFilter, Retriever_OwnerEntity);
         }
-        else
+        else if (!perk.InitInternal())
         {
-            perk.InitInternal();
+            return;
         }
+        g_InitializedEffects++;
     }
     g_Ready = true;
+    StartupLog("loaded %d/%d", g_InitializedEffects, RTD_EFFECT_COUNT);
 }
 
 public void OnMapEnd()
 {
     StopAllEffects(RTDRemove_NoPrint);
     g_Ready = false;
+    g_InitializedEffects = 0;
     for (int effect = 0; effect < RTD_EFFECT_COUNT; effect++)
         g_AllEvents[effect].Cleanup();
 }
 
 public void OnPluginEnd()
 {
-    if (g_hRollers == null)
+    if (!g_RuntimeInitialized)
         return;
     StopAllEffects(RTDRemove_PluginUnload);
 }
@@ -4806,12 +4968,68 @@ public void FF2R_OnBossRemoved(int boss)
     g_ContextEffect = previous;
 }
 
+// Observe the global pre-forward even when the main callback is routed to a
+// different plugin, or a later pre-hook prevents the ability from executing.
+public Action FF2R_OnAbilityPre(int boss, const char[] ability, AbilityData cfg, bool &result)
+{
+    if (StrContains(ability, "rage_rtd_", false) == 0)
+    {
+        char plugin[64];
+        cfg.GetString("plugin_name", plugin, sizeof(plugin), "<omitted>");
+        RuntimeTrace("PRE boss=%d; ability=%s; plugin_name=%s; slot=%d; result_on_entry=%d",
+            boss, ability, plugin, cfg.GetInt("slot", cfg.GetInt("arg0", 0)), result);
+    }
+    return Plugin_Continue;
+}
+
+public void FF2R_OnAbilityPost(int boss, const char[] ability, AbilityData cfg)
+{
+    if (StrContains(ability, "rage_rtd_", false) == 0)
+        RuntimeTrace("POST boss=%d; ability=%s", boss, ability);
+}
+
+// A missed/suppressed start event must not permanently disable every ability.
+// Recover only when the engine confirms live combat, after cleanup has fully
+// unwound and at least one tick after the stop event. Round-end callbacks can
+// still see the old engine state while that event is being processed.
+void TryResumeRtdRound(RoundState state)
+{
+    if (!g_Ready || !g_RoundEnding || g_StopAllDepth > 0 || GetGameTickCount() <= g_LastStopTick)
+        return;
+    if (state != RoundState_RoundRunning && state != RoundState_Stalemate)
+        return;
+    g_RoundEnding = false;
+    RuntimeTrace("RECOVER v%s: cleared stale round_ending; engine_state=%d; last_round_event=%s",
+        RTD_PLUGIN_VERSION, state, g_LastRoundEvent);
+}
+
 public void FF2R_OnAbility(int boss, const char[] ability, AbilityData cfg)
 {
-    if (!g_Ready || g_RoundEnding || !cfg.IsMyPlugin() || StrContains(ability, "rage_rtd_", false) != 0)
+    if (StrContains(ability, "rage_rtd_", false) != 0)
         return;
+    int engineState = -1;
+    if (g_Ready)
+    {
+        engineState = view_as<int>(GameRules_GetRoundState());
+        TryResumeRtdRound(view_as<RoundState>(engineState));
+    }
+    RuntimeTrace("MAIN v%s; boss=%d; ability=%s; ready=%d; round_ending=%d; engine_state=%d; last_round_event=%s",
+        RTD_PLUGIN_VERSION, boss, ability, g_Ready, g_RoundEnding, engineState, g_LastRoundEvent);
+    if (!g_Ready || g_RoundEnding)
+    {
+        RuntimeTrace("REJECT %s: map not ready or round ending", ability);
+        return;
+    }
+    if (!cfg.IsMyPlugin())
+    {
+        RuntimeTrace("REJECT %s: plugin_name does not match the loaded filename", ability);
+        return;
+    }
     if (!IsValidClient(boss) || !IsPlayerAlive(boss))
+    {
+        RuntimeTrace("REJECT %s: caster is not in game or alive", ability);
         return;
+    }
 
     char token[64];
     strcopy(token, sizeof(token), ability[9]);
@@ -4879,10 +5097,15 @@ public void FF2R_OnAbility(int boss, const char[] ability, AbilityData cfg)
         targets[count++] = GetClientUserId(client);
     }
 
+    RuntimeTrace("TARGETS %s: selected=%d; target=%s; range=%.1f; respect_loadout=%d; duration=%d",
+        ability, count, target, range, cfg.GetBool("respect_loadout", true), duration);
     for (int i = 0; i < count; i++)
     {
         if (g_RoundEnding || !IsValidClient(boss) || !IsPlayerAlive(boss) || !FF2R_GetBossData(boss))
+        {
+            RuntimeTrace("REJECT %s: round ended or caster no longer an alive FF2R boss", ability);
             break;
+        }
         int client = GetClientOfUserId(targets[i]);
         if (IsValidClient(client) && IsPlayerAlive(client))
             ApplyAbility(boss, client, perk, cfg, duration);
@@ -4936,11 +5159,17 @@ void ApplyAbility(int boss, int client, Perk perk, AbilityData cfg, int duration
 void ApplyOneAbility(int boss, int client, Perk perk, AbilityData cfg, int duration)
 {
     if (g_Applying[client] || g_Removing[client])
+    {
+        RuntimeTrace("SKIP effect=%d; target=%d; applying=%d; removing=%d", perk.Id, client, g_Applying[client], g_Removing[client]);
         return;
+    }
     if (g_hRollers.GetInRoll(client))
     {
         if (!cfg.GetBool("replace", false))
+        {
+            RuntimeTrace("SKIP effect=%d; target=%d; already active and replace=false", perk.Id, client);
             return;
+        }
         RemovePerk(client, RTDRemove_NoPrint);
         if (!IsPlayerAlive(client))
             return;
@@ -4970,6 +5199,7 @@ void ApplyOneAbility(int boss, int client, Perk perk, AbilityData cfg, int durat
     g_Sharpness[client] = ClampInt(perk.GetPrefCell("sharpness", 8), 1, 100);
     ConfigureAbilityText(client, boss, cfg, timed, duration);
     PlayAbilitySound(client, cfg);
+    RuntimeTrace("APPLY effect=%d; boss=%d; target=%d; timed=%d; duration=%d", perk.Id, boss, client, timed, duration);
     perk.CallInternal(client, true, RTDRemove_NoPrint);
     g_ApplyDuration = previousDuration;
     g_ActivePerk = previousPerk;
@@ -5237,6 +5467,8 @@ Perk RemovePerk(int client, RTDRemoveReason reason = RTDRemove_WearOff)
 
 void StopAllEffects(RTDRemoveReason reason)
 {
+    g_StopAllDepth++;
+    g_LastStopTick = GetGameTickCount();
     g_RoundEnding = true;
     g_RoundSerial++;
     for (int client = 1; client <= MaxClients; client++)
@@ -5248,6 +5480,7 @@ void StopAllEffects(RTDRemoveReason reason)
     if (g_hHoming != null)
         g_hHoming.Clear();
     // Pending apply callbacks retain their original layers until they unwind.
+    g_StopAllDepth--;
 }
 
 public void Event_Death(Event event, const char[] name, bool dontBroadcast)
@@ -5272,9 +5505,15 @@ public void Event_ClassChange(Event event, const char[] name, bool dontBroadcast
 
 public void Event_Reset(Event event, const char[] name, bool dontBroadcast)
 {
+    strcopy(g_LastRoundEvent, sizeof(g_LastRoundEvent), name);
     StopAllEffects(RTDRemove_NoPrint);
-    if (StrEqual(name, "teamplay_round_start"))
+    // FF2R starts combat on arena_round_start or teamplay_setup_finished.
+    // Listening only for teamplay_round_start can leave the previous round's
+    // ending flag set and silently reject every RTD ability in the new round.
+    if (StrEqual(name, "teamplay_round_start") || StrEqual(name, "arena_round_start")
+        || StrEqual(name, "teamplay_setup_finished"))
         g_RoundEnding = false;
+    RuntimeTrace("ROUND event=%s; round_ending=%d", name, g_RoundEnding);
 }
 
 public void Event_Resupply(Event event, const char[] name, bool dontBroadcast)
