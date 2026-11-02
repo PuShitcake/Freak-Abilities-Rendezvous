@@ -10,7 +10,7 @@ Configuration examples for Freak Fortress 2 Rewrite. Copy an ability's code bloc
 
 ## Ammo Drain
 
-Ability: `rage_ammo_drain`
+Detective Behind Chinatown's
 
 ```text
 "rage_ammo_drain"
@@ -56,7 +56,7 @@ Ability: `rage_ammo_drain`
 
 ## Corrupted Energy
 
-Ability: `rage_corrupted_energy`
+Pallidified Captain's
 
 ```text
 "rage_corrupted_energy"
@@ -196,9 +196,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Toxic: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -228,9 +228,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Flying: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -257,9 +257,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Infinite Ammo: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -286,9 +286,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Scary Bullets: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -316,9 +316,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Erecting a Sentry Here!: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -354,9 +354,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Homing Projectiles: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -385,9 +385,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Explode: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -415,9 +415,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Too Slow: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -443,9 +443,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Frozen: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -488,9 +488,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Allahu Akbar: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -526,9 +526,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Ignition activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -550,9 +550,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Low Health activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -578,9 +578,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "GET HIGH: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -606,9 +606,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Blind: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -641,9 +641,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Strip to Melee: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -674,9 +674,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Beacon: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -704,9 +704,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Forced Taunt: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -732,9 +732,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Monochromia: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -756,9 +756,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Earthquake: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -786,9 +786,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Funny Feeling: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -814,9 +814,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Bad Sauce: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -852,9 +852,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Pootispencerere!: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -890,9 +890,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Infinite Double Jump: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -914,9 +914,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Powerful Hits: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -942,9 +942,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Big Ass Head: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -970,9 +970,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Tiny Desk Ability: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1001,9 +1001,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Hanabi dayo~ gomene~ activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1036,9 +1036,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Deadly Voice: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1072,9 +1072,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Eye for an Eye: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1096,9 +1096,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Weakened: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1124,9 +1124,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Its Punishment Time! activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1148,9 +1148,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Extra Ammo activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1176,9 +1176,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Suffocation: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1208,9 +1208,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Fast Hands: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1238,9 +1238,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Outline: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1262,9 +1262,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Team Criticals: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1296,9 +1296,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Allahu Akbar But On Fire: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1332,9 +1332,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Fire Breath: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1366,9 +1366,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Strong Recoil: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1390,9 +1390,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Cursed: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1414,9 +1414,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Extra Throwables activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1442,9 +1442,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Explosive Arrows: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1474,9 +1474,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Fatass: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1498,9 +1498,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Spring Shoes: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1522,9 +1522,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Fake Lag: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1546,9 +1546,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Drug Bullets: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1574,9 +1574,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Long Meleeeeeeeeeeee: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1602,9 +1602,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Hat Throw: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1638,9 +1638,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Bombardino Crocodillo: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1678,9 +1678,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Sickness: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1713,9 +1713,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "SkillIssue activated!" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1737,9 +1737,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Drunk Walk: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1769,9 +1769,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Hell's Reach: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1799,9 +1799,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Cursed Projectiles: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1827,9 +1827,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Vampire: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1859,9 +1859,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Bat Swarm: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1900,9 +1900,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Pumpkin Trail: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1938,9 +1938,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "A Call Beyond: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -1975,9 +1975,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Kru Thai Strikes: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -2009,9 +2009,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Overheal Bonus: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -2037,9 +2037,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Sunlight Spear: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -2079,9 +2079,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Elden Stars: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -2117,9 +2117,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Frog: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -2149,9 +2149,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Paranoia: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -2173,9 +2173,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Heavy Rockets: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -2201,9 +2201,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Weapon Mixup: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -2225,9 +2225,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Autoheal: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
@@ -2255,9 +2255,9 @@ Use the index below to jump to an ability and copy its configuration.
     "target"             "self" // self / enemies / allies (excluding self) / team (including self) / all
     "range"              "0" // Target selection range; 0 = unlimited
     "line_of_sight"      "false" // true = require a clear line of sight from the boss to each target
-    "affect_bosses"      "true" // true = allow other bosses as targets; false = exclude other bosses
+    "affect_bosses"      "false" // true = allow other bosses as targets; false = exclude other bosses
     "replace"            "false" // true = replace this effect type; false = skip if this type is active. Other types stack
-    "respect_loadout"    "true" // true = enforce this effect's RTD class and weapon restrictions
+    "respect_loadout"    "false" // true = enforce this effect's RTD class and weapon restrictions
     "sound"              "" // Path relative to sound/; empty or omitted = no activation sound
     "message"            "Team Autoheal: {time}s remaining" // Text shown only to the affected player; empty/omitted = hide the main HUD
     "message_duration"   "3.0" // Seconds for instant messages and event notices; timed main HUD lasts until effect ends
